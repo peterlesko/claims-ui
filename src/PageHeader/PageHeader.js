@@ -1,19 +1,15 @@
 import Menu from "./Menu";
 import './PageHeader.css';
 
-const PageHeader = () => {
+const PageHeader = (props) => {
   return (
-    <div class="containerHeader">
+    <div className="pageHeader">
 
-      <div className="containerLogo">
+      <div className="pageHeaderLogo">
         <h2>Insurance Company</h2>
       </div>
 
-
-      <div className="menu">
-        <Menu />
-      </div>
-
+      <Menu setSelectedPage={props.setSelectedPage} />
     </div>
   )
 };

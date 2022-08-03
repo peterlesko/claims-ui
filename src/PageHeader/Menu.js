@@ -1,24 +1,19 @@
 import './PageHeader.css';
 
-const Menu = () => {
+const Menu = (props) => {
 
   return (
-
-    <div className="containerButtons">
-      <button className ="button" type="button" class="newClaim">NEW CLAIM</button>
-      <button className ="button" type="button" class="existingClaim">EXISTING CLAIM</button>
-      <button className ="button" type="button" class="search">SEARCH</button>
-      <button className ="button" type="button" class="view Claims">VIEW CLAIMS</button>
+    <div className="ButtonsMenu">
+      <button className="newClaim" type="button" onClick={() => props.setSelectedPage("newClaim")}>NEW CLAIM</button>
+      <button className="existingClaim" type="button" >EXISTING CLAIM</button>
+      <button className="search" type="button" onClick={() => props.setSelectedPage("search")}>SEARCH</button>
+      <button className="view Claims" type="button">VIEW CLAIMS</button>
     </div>
+
   )
 }
 
 export default Menu;
-
-
-
-
-
 
 
 // ????

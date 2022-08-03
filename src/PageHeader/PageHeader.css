@@ -1,16 +1,13 @@
 
-.containerHeader {
+.pageHeader {
   width: 1024px;
   margin-left: auto;
   margin-right: auto;
-  background-color: darkblue;
+  background-color: #0047AB;
   font-family: "Lato", sans-serif;
 }
 
-.containerLogo {
-  /* background: #ccc; */
-
-  background-color: darkblue;
+ .pageHeaderLogo {
   color: #fff;
   font-family: "Lato", sans-serif;
   font-weight: bold;
@@ -20,12 +17,64 @@
   padding-bottom: 15px;
 }
 
+.pageHeader button{
+  background-color: #6495ED;
+  font-weight: bold;
+  color: #fff;
+  font-size: 14px;
+  margin: 2px;
+  padding: 10px;
+  cursor:pointer;
+
+}
+
+@media only screen and (max-width: 768px) {
+  .pageHeader {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+.menu {
+  width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: darkblue;
+} */
+
 /* .menu { */
-  .containerButtons button {
+  /* .containerButtons button {
   background-color: royalblue;
   color: #fff;
   font-size: 14px;
   font-weight: bold;
   margin: 2px;
   padding: 10px;
-}
+} */

@@ -1,0 +1,30 @@
+.registerClaim {
+  width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(69, 71, 69);
+}
+
+.formHeader {
+  text-align: center;
+  text-decoration: strong;
+  margin-bottom: 200px;
+}
+
+.registerClaim {
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(210, 230, 200);
+  border: 1px #000 solid;
+  padding: 10px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+  .registerClaim {
+    width: 70%;
+    background: #7891d6;
+  }
+}
