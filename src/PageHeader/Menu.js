@@ -1,16 +1,33 @@
+import { Link } from 'react-router-dom';
 import './PageHeader.css';
 
 const Menu = (props) => {
 
   return (
     <div className="ButtonsMenu">
-      <button className="newClaim" type="button" onClick={() => props.setSelectedPage("newClaim")}>NEW CLAIM</button>
-      <button className="existingClaim" type="button" >EXISTING CLAIM</button>
-      <button className="search" type="button" onClick={() => props.setSelectedPage("search")}>SEARCH</button>
-      <button className="view Claims" type="button">VIEW CLAIMS</button>
-    </div>
+      {/* <button className="newClaim" type="button" onClick={() => props.setSelectedPage("newClaim")}>NEW CLAIM</button> */}
 
+      <Link to="/registerClaim"><button className="newClaim" type="button">NEW CLAIM</button></Link> 
+      <Link to="/search"><button className="search" type="button">SEARCH</button></Link> 
+      <Link to="/existingClaim"><button className="existingClaim" type="button">EXISTING CLAIM</button></Link> 
+      <Link to="/viewClaims"><button className="view Claims" type="button">VIEW CLAIMS</button></Link> 
+
+
+      {/* <button className="existingClaim" type="button" >EXISTING CLAIM</button> */}
+      {/* <button className="search" type="button" onClick={() => props.setSelectedPage("search")}>SEARCH</button> */}
+      {/* <button className="view Claims" type="button">VIEW CLAIMS</button> */}
+    </div>
   )
+
+  // return (
+  //   <div className="ButtonsMenu">
+  //     <button className="newClaim" type="button" onClick={() => props.setSelectedPage("newClaim")}>NEW CLAIM</button>
+  //     <button className="existingClaim" type="button" >EXISTING CLAIM</button>
+  //     <button className="search" type="button" onClick={() => props.setSelectedPage("search")}>SEARCH</button>
+  //     <button className="view Claims" type="button">VIEW CLAIMS</button>
+  //   </div>
+
+  // )
 }
 
 export default Menu;
