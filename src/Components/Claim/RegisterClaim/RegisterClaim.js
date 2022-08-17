@@ -1,5 +1,3 @@
-import Footer from "../Footer/Footer";
-import PageHeader from "../PageHeader/PageHeader";
 import './RegisterClaim.css';
 
 

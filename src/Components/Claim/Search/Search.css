@@ -1,12 +1,11 @@
 
-
-.search {
+.search.claims-table  {
   background-color: rgb(210, 230, 200);
-  margin-top: 40px;
+  margin-top: 10px;
   margin-bottom: 40px;
 }
 
-.searchClaims {
+.search-claims {
   width: 350px;
   /* text-align: center; */
   margin-left: auto;
@@ -15,60 +14,66 @@
   /* background-color: #1e90ff; */
   border: 1px #000 solid;
   padding: 10px;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   margin-bottom: 40px;
 }
 
-.formHeader {
-  text-align: center;
-  text-decoration: strong;
+h2.search-heading {
+  /* text-align: center; */
+  /* text-decoration: strong; */
 }
 
-.searchClaims form label {
+.search-claims label {
   width: 120px;
   display: block; /*label is inline object, must be made a block */
   float: left;
   margin-right: 10px;
 }
 
-.searchClaims input {
+.search-claims input {
   margin-bottom: 10px;
   display: block;
   /*clear: both; /*stops floating after input*/
 }
 
-.searchClaims form button {
-  background-color: rgb(129, 193, 129);
-  margin-left: 220px;
+.search-claims button {
+/* .search-claims button { */
+  background-color: rgb(193, 129, 159);
+  margin-left: 240px;
+  /* margin-right: 4px; */
+    /* float: right; */
+
+    /* margin: 10px; */
 }
 
-.search button {
+/* .search-table button {
   background-color: rgb(129, 193, 129);
 }
 
-.searchTable {
+.search-table {
   background-color: #fff;
-  width: 550px;
+  width: 850px;
   margin-left: auto;
   margin-right: auto;
   border: 1px solid #000;
   border-collapse: collapse;
+  text-align: center;
 }
 
-.searchTable td, th {
+.search-table td, th {
   border: 1px solid #000;
-}
+} */
 
 @media only screen and (max-width: 768px) {
-  .searchTable{
-    width: 70%;
-    background: #7891d6;
+  .search-claims{
+    width: 50%;
+    background: #d2daf3;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .searchForm{
+/* @media only screen and (max-width: 768px) {
+  .search-table{
     width: 70%;
-    background: #7891d6;
+    background: #d2daf3;
   }
-}
+} */

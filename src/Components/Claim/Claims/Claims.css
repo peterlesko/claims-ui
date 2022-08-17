@@ -1,0 +1,41 @@
+.claims-table button {
+  background-color: rgb(129, 193, 129);
+    /* background-color: rgb(193, 29, 119); */
+}
+
+.claims-table {
+  background-color: #fff;
+  width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #000;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.claims-table td, th {
+  border: 1px solid #000;
+}
+
+
+
+
+
+
+/* .search-table button {
+  background-color: rgb(129, 193, 129);
+}
+
+.search-table {
+  background-color: #fff;
+  width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #000;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.search-table td, th {
+  border: 1px solid #000;
+} */
