@@ -1,0 +1,74 @@
+
+
+.search {
+  background-color: rgb(210, 230, 200);
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.searchClaims {
+  width: 350px;
+  /* text-align: center; */
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  /* background-color: #1e90ff; */
+  border: 1px #000 solid;
+  padding: 10px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.formHeader {
+  text-align: center;
+  text-decoration: strong;
+}
+
+.searchClaims form label {
+  width: 120px;
+  display: block; /*label is inline object, must be made a block */
+  float: left;
+  margin-right: 10px;
+}
+
+.searchClaims input {
+  margin-bottom: 10px;
+  display: block;
+  /*clear: both; /*stops floating after input*/
+}
+
+.searchClaims form button {
+  background-color: rgb(129, 193, 129);
+  margin-left: 220px;
+}
+
+.search button {
+  background-color: rgb(129, 193, 129);
+}
+
+.searchTable {
+  background-color: #fff;
+  width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+
+.searchTable td, th {
+  border: 1px solid #000;
+}
+
+@media only screen and (max-width: 768px) {
+  .searchTable{
+    width: 70%;
+    background: #7891d6;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .searchForm{
+    width: 70%;
+    background: #7891d6;
+  }
+}
