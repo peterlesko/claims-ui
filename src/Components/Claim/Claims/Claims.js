@@ -8,16 +8,21 @@ const Claims = (props) => {
   // const claims = getAllClaims();
   // const displayClaims = claims.map((claim, index) => <ClaimRow key={index} claimRow={claim} />);
 
-  const claims = getAllClaims();
+  // const claims = getAllClaims();
+  // const displayClaims = claims
+  //   .map(claim =>
+  //     <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} policyNumber={claim.policyNumber} surname={claim.surname}
+  //       claimOpenDate={claim.claimOpenDate} status={claim.status} />);
 
+  const claims = getAllClaims();
   const displayClaims = claims
     // .filter (claim => props.searchTerm === claim.claimId ||
     //                   props.searchTerm === claim.policyNumber ||
-    //                   props.searchTerm === claim.surname)
-    .filter(claim => props.searchTerm === claim.surname)
-    .map(claim => 
-      <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} policyNumber={claim.policyNumber} surname={claim.surname}
-              claimOpenDate={claim.claimOpenDate} status={claim.status}/> );
+    //                   props.searchTerm === claim.surname)my pro
+    .filter(claim => (props.searchSurname === claim.surname) || (props.searchPolicyNo === claim.policyNumber))
+    // .filter(claim => (props.searchSurname === claim.status) )
+    .map(claim => <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} policyNumber={claim.policyNumber} surname={claim.surname}
+                  claimOpenDate={claim.claimOpenDate} status={claim.status}/> );
 
   return <Fragment>
 

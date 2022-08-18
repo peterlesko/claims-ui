@@ -21,9 +21,13 @@ const Search = (props) => {
 
   const [valid, setValid] = useState(false);
 
+  // commented out code set use state depending on which input field
+  //now it sets surname only  
   const doSearch = (event) => {
     event.preventDefault();
-    props.setSearchSurname(searchSurname.trim());
+    // if (!(searchSurname === null)) {
+    // props.setSearchSurname(searchSurname.trim());
+    // }
     // if (!(searchClaimId === null)) {
     //   props.setSearchClaimId(searchClaimId.trim());
     // } else if (!(searchPolicyNo === null)){
@@ -31,6 +35,14 @@ const Search = (props) => {
     // } else if (!(searchSurname === null)) {
     //   props.setSearchSurname(searchSurname.trim());
     // }
+
+    //this for surname and policy number.   
+    if (!(searchSurname === null)) {
+      props.setSearchSurname(searchSurname.trim());
+    }  else if (!(searchPolicyNo === null)) {
+      props.setSearchPolicyNo(searchPolicyNo.trim());
+    }
+
   }
 
   const handleChangeClaimId = (event) => {
