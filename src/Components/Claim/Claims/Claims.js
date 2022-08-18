@@ -1,7 +1,9 @@
 import './Claims.css';
 import { Fragment } from "react";
 import { getAllClaims } from "../../../data/DataFunctions";
-import ClaimRow from "./ClaimRow";
+import ClaimRow from "./ClaimRow"; 
+//import ReactTable from "react-table-6"; 
+// import 'react-table-6/react-table.css';
 
 const Claims = (props) => {
 
@@ -19,14 +21,14 @@ const Claims = (props) => {
     // .filter (claim => props.searchTerm === claim.claimId ||
     //                   props.searchTerm === claim.policyNumber ||
     //                   props.searchTerm === claim.surname)my pro
-    .filter(claim => (props.searchSurname === claim.surname) || (props.searchPolicyNo === claim.policyNumber))
+    .filter(claim => (props.searchSurname === claim.surname) || (props.searchPolicyNo === claim.status))
     // .filter(claim => (props.searchSurname === claim.status) )
     .map(claim => <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} policyNumber={claim.policyNumber} surname={claim.surname}
                   claimOpenDate={claim.claimOpenDate} status={claim.status}/> );
 
   return <Fragment>
 
-    <table class="claims-table" >
+    <table class="claims-table">
       <thead>
         <tr>
           <th>Claim Id</th>
@@ -38,12 +40,20 @@ const Claims = (props) => {
           <th></th>
         </tr>
       </thead>
- 
       <tbody>    
         {displayClaims}
       </tbody> 
     </table>
   </Fragment>
 }
+
+// return <div>
+//   <ReactTable
+//     data={claims}
+//     columns={claimTableColumns} />
+// </div
+
+
+
 
 export default Claims; 

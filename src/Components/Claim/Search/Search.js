@@ -37,9 +37,9 @@ const Search = (props) => {
     // }
 
     //this for surname and policy number.   
-    if (!(searchSurname === null)) {
+    if (searchSurname !== "") {
       props.setSearchSurname(searchSurname.trim());
-    }  else if (!(searchPolicyNo === null)) {
+    }  else if (searchPolicyNo !== "") {
       props.setSearchPolicyNo(searchPolicyNo.trim());
     }
 

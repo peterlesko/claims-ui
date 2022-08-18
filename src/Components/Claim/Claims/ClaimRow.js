@@ -1,4 +1,3 @@
-
 const ClaimRow = (props) => {
 
   return <tr>
@@ -24,7 +23,6 @@ const ClaimRow = (props) => {
   //     <button type="button" class="viewButton">View</button>
   //   </td>
   // </tr>;
-
 }
 
 export default ClaimRow; 

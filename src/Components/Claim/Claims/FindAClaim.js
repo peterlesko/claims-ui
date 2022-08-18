@@ -18,7 +18,7 @@ const FindAClaim = () => {
   //     return (<Fragment>
   //   <Search setSearchSurname={setSearchSurname}/>
   //   <Claims searchSurname={searchSurname} />
-  //   </Fragment>)
+  //   </Fragment>)can you pls paste http://localhost:8080/api/healthpeter
   // }
 
   const [searchSurname, setSearchSurname] = useState("");
@@ -28,7 +28,6 @@ const FindAClaim = () => {
     <Claims searchSurname={searchSurname} searchPolicyNo={searchPolicyNo} />
     </Fragment>)
   }
-
 
   // return (<Fragment>
   //   <Search />
