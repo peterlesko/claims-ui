@@ -3,11 +3,21 @@ import { Fragment } from "react";
 import { getAllClaims } from "../../../data/DataFunctions";
 import ClaimRow from "./ClaimRow";
 
+const Claims = (props) => {
 
-const Claims = () => {
+  // const claims = getAllClaims();
+  // const displayClaims = claims.map((claim, index) => <ClaimRow key={index} claimRow={claim} />);
 
   const claims = getAllClaims();
-  const displayClaims = claims.map((claim, index) => <ClaimRow key={index} claimRow={claim} />);
+
+  const displayClaims = claims
+    // .filter (claim => props.searchTerm === claim.claimId ||
+    //                   props.searchTerm === claim.policyNumber ||
+    //                   props.searchTerm === claim.surname)
+    .filter(claim => props.searchTerm === claim.surname)
+    .map(claim => 
+      <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} policyNumber={claim.policyNumber} surname={claim.surname}
+              claimOpenDate={claim.claimOpenDate} status={claim.status}/> );
 
   return <Fragment>
 
@@ -23,7 +33,7 @@ const Claims = () => {
           <th></th>
         </tr>
       </thead>
-
+ 
       <tbody>    
         {displayClaims}
       </tbody> 

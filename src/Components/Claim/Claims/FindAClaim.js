@@ -1,15 +1,26 @@
-import { Fragment} from "react";
+import { Fragment, useState} from "react";
 import Search from "../Search/Search";
 import Claims from "./Claims";
 
 const FindAClaim = () => {
 
-return <Fragment>
+//   const [searchTerm, setSearchTerm] = useState("");
 
-    <Search/>
-    <Claims/>
+//   return <Fragment>
+//     <Search setSearchTerm={searchTerm} />
+//     <Claims searchTerm={searchTerm}/>
+//   </Fragment>
+// }
 
-  </Fragment>
-}
+  const [searchSurname, setSearchSurname] = useState("");
+
+  return (<Fragment>
+    <Search setSearchSurname={setSearchSurname} />
+      <Claims searchSurname={searchSurname} />
+    </Fragment>)
+  }
+
+
+
 
 export default FindAClaim;

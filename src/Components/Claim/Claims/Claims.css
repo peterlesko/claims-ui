@@ -1,11 +1,15 @@
 .claims-table button {
   background-color: rgb(129, 193, 129);
-    /* background-color: rgb(193, 29, 119); */
+  /* background-color: rgb(193, 29, 119); */
+  font-weight: bold;
+  /* border-bottom: 50px;; */
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .claims-table {
   background-color: #fff;
-  width: 850px;
+  width: 750px;
   margin-left: auto;
   margin-right: auto;
   border: 1px solid #000;
