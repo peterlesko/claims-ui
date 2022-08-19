@@ -61,7 +61,7 @@ const Claims = (props) => {
 
   return <Fragment>
 
-    <table class="claims-table">
+    <table className="claims-table">
       <thead>
         <tr>
           <th>Claim Id</th>
@@ -86,8 +86,5 @@ const Claims = (props) => {
 //     data={claims}
 //     columns={claimTableColumns} />
 // </div
-
-
-
 
 export default Claims; 

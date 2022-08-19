@@ -8,7 +8,7 @@ const ClaimRow = (props) => {
     <td>{props.claimOpenDate}</td>
     <td>{props.status}</td>
     <td>
-      <button type="button" class="viewButton">View</button>
+      <button type="button" className="viewButton">View</button>
     </td>
   </tr>;
 

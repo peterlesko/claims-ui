@@ -62,9 +62,9 @@ const Search = (props) => {
 
   return <Fragment>
 
-    <div class="search">
-      <div class="search-claims">
-        <h2 class="search-heading">Search claims</h2>
+    <div className="search">
+      <div className="search-claims">
+        <h2 className="search-heading">Search claims</h2>
 
         <form onSubmit={doSearch}>
           <label htmlFor="claimId">Claim Id *</label>
@@ -80,7 +80,7 @@ const Search = (props) => {
           <input onChange={handleChangeSurname} value={searchSurname} id="surname" type="text" />
           {/* <input type="text" id="surname" /> */}
 
-          <button type="submit" disabled={!valid} class="Search">Search</button>
+          <button type="submit" disabled={!valid} className="Search">Search</button>
         </form>
       </div>
     </div>

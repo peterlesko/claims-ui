@@ -7,7 +7,7 @@ const Menu = (props) => {
     <div className="ButtonsMenu">
       {/* <button className="newClaim" type="button" onClick={() => props.setSelectedPage("newClaim")}>NEW CLAIM</button> */}
 
-      <Link to="/registerClaim"><button className="newClaim" type="button">NEW CLAIM</button></Link> 
+      <Link to="/newClaim"><button className="newClaim" type="button">NEW CLAIM</button></Link> 
       <Link to="/findAClaim"><button className="findAClaim" type="button">FIND A CLAIM</button></Link> 
       <Link to="/existingClaim"><button className="existingClaim" type="button">EXISTING CLAIM</button></Link> 
       <Link to="/viewClaims"><button className="view Claims" type="button">VIEW CLAIMS</button></Link> 

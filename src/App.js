@@ -2,13 +2,14 @@ import './App.css';
 import PageHeader from './Components/Site/PageHeader/PageHeader';
 import Menu from './Components/Site/PageHeader/Menu';
 import Footer from './Components/Site/Footer/Footer';
-import RegisterClaim from './Components/Claim/RegisterClaim/RegisterClaim';
+import RegisterClaim from './Components/Claim/NewClaim/NewClaim';
 import Search from './Components/Claim/Search/Search';
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ExistingClaim from './Components/Claim/ExistingClaim/ExistingClaim';
 import ViewClaims from './Components/Claim/ViewClaims/ViewClaims';
 import FindAClaim from './Components/Claim/Claims/FindAClaim';
+import NewClaim from './Components/Claim/NewClaim/NewClaim';
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
       <div className="App">
         <PageHeader/>
             <Routes>
-              <Route path="/registerClaim" element={<RegisterClaim/>} />
+              <Route path="/newClaim" element={<NewClaim/>} />
               <Route path="/findAClaim" element={<FindAClaim/>} />
               <Route path="/existingClaim" element={<ExistingClaim/>} />
               <Route path="/viewClaims" element={<ViewClaims/>} />
