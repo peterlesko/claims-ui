@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const getAllClaims = () => {
   return [
     {
@@ -28,12 +30,83 @@ export const getAllClaims = () => {
         claimReason: "window broken by neighbour's child playing football",
         address: "27 Summer View, Differentown"
     }
-
-
     // { id: 1, type: "Motor", policyNumber: 147854925639, Name: "Mark Smith", startDate: "2018-08-02",  },
     //   {id: 2, policyNumber: 4406, title: "Mrs"}
     ]
   }
+
+//axios version used instead of getAllPaymentsRestVersion, rec 6.7.22 2:05:05
+export const getAllClaimsAxiosVersion = () => {
+  // const headers = new Headers({ 'Accept': 'application/json' });
+  const claimsPromise = axios({
+    url: "http://localhost:8080/api/claim/",
+    method: "GET", headers: { 'Accept': 'application/json' }
+  });
+  return claimsPromise;
+}
+
+export const addNewClaim = (claim) => {
+  return axios({
+    url: "http://localhost:8080/api/claim/",
+    method: "POST",
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/JSON' },
+    data: claim
+  });
+}
+
+//1st version, which was later simplified in getAllPaymentsRestVersion, rec 6.7.22 1:30:00
+// export const getAllPaymentsRestExample = () => {
+//   // console.log("get all payments has run");
+//   const headers = new Headers({ 'Accept': 'application/json' });
+//   //GET http://localhost:8080/api/payment
+
+//   const age = 17;
+//   const person = { name: "Matt", address: "10 any road", age: 17 };
+
+//   const paymentsPromise = fetch("http:// localhost:8080/api/payment",
+//     { method: "GET", headers: headers });
+//   paymentsPromise.then(
+//                       (response) => {
+//                         if (response.ok) {
+//                         const dataPromise =  response.json();
+//                         dataPromise.then (data => {
+//                           console.log(data);
+//                         })
+//                         }
+//                         else {
+//                           console.log("Something went wrong - the server responded with",
+//                           response.status, response.statusText);
+//                         }
+//                       }
+//                     )
+//                   .catch(
+//                     (error) => {
+//                       console.log("soemething went wrong", error);
+//                     }
+//                   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
   // [
   //   { id: 101, amount: 160, country: "USA", currency: "USD", date: "2017-01-31", order_id: "21216652", tax_code: 0, tax_rate: 0, type: "SALE" },
