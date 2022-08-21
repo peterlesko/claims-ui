@@ -35,6 +35,8 @@ export const getAllClaims = () => {
     ]
   }
 
+
+// This is working
 //axios version used instead of getAllPaymentsRestVersion, rec 6.7.22 2:05:05
 export const getAllClaimsAxiosVersion = () => {
   // const headers = new Headers({ 'Accept': 'application/json' });
@@ -50,9 +52,12 @@ export const addNewClaim = (claim) => {
     url: "http://localhost:8080/api/claim/",
     method: "POST",
     headers: { 'Accept': 'application/json', 'Content-Type': 'application/JSON' },
-    data: claim
-  });
+    data: claim});
 }
+
+
+
+
 
 //1st version, which was later simplified in getAllPaymentsRestVersion, rec 6.7.22 1:30:00
 // export const getAllPaymentsRestExample = () => {

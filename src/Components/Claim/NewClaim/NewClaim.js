@@ -1,4 +1,5 @@
-import { Fragment, useReducer } from 'react';
+import { Fragment, useReducer, useState } from 'react';
+import { addNewClaim } from '../../../data/DataFunctions';
 import './NewClaim.css';
 
 const RegisterClaim = () => {
@@ -17,9 +18,28 @@ const RegisterClaim = () => {
     dispatch(dataToChange);
   }
 
+  const [message, setMessage] = useState("");
+  const [saving, setSaving] = useState(false);
+
   const submitForm = (e) => {
     e.preventDefault();
-    console.log(newClaim);
+    // console.log(newClaim);
+    setSaving(true);
+    setMessage("plase wait - saving")
+    const response = addNewClaim(newClaim);
+    response.then(result => {
+      if (result.status === 200) {
+        setMessage("Claim added with id " + result.data.id)
+      }
+      else {
+        setMessage("someting went wrong ", result.statusText)
+      }
+      setSaving(false);
+    })
+      .catch(error => {
+        setMessage("something went wrong ", error);
+        setSaving(false);
+      })
   }
 
 
@@ -75,7 +95,8 @@ const RegisterClaim = () => {
         {/* <button disabled={!valid} className="registerclaim_button" type="submit">Save</button> */}
         {/* <button disabled={saving className="registerclaim_button" type="submit">Save</button> */}
 
-        <button className="registerclaim_button" type="submit">Save</button>
+        <button disabled={saving} className="registerclaim_button" type="submit">Save</button>
+        <p>{message}</p>
   
       </form>
     </div>

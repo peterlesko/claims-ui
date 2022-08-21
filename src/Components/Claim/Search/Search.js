@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react';
 import './Search.css';
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Search = (props) => {
 
@@ -21,6 +22,8 @@ const Search = (props) => {
 
   const [valid, setValid] = useState(false);
 
+  const navigate = useNavigate();
+
   // commented out code set use state depending on which input field
   //now it sets surname only  
   const doSearch = (event) => {
@@ -39,11 +42,18 @@ const Search = (props) => {
     //this for surname and policy number.   
     if (searchSurname !== "") {
       props.setSearchSurname(searchSurname.trim());
+      navigate("/findAClaim/" + searchSurname.trim());   //to update URL, rec.8, 18.7.22
     }  else if (searchPolicyNo !== "") {
       props.setSearchPolicyNo(searchPolicyNo.trim());
     }
 
+
   }
+
+  //to update URL, rec.8, 18.7.22
+  // const select
+
+
 
   const handleChangeClaimId = (event) => {
     setSearchClaimId(event.target.value);

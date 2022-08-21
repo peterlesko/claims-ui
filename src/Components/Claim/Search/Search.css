@@ -1,9 +1,9 @@
-
+/* 
 .search.claims-table  {
   background-color: rgb(210, 230, 200);
   margin-top: 10px;
   margin-bottom: 40px;
-}
+} */
 
 .search-claims {
   width: 350px;
@@ -15,6 +15,7 @@
   border: 1px #000 solid;
   padding: 10px;
   /* margin-top: 40px; */
+  margin-top: 20px;
   margin-bottom: 40px;
 }
 
