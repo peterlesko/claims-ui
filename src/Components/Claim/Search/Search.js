@@ -4,18 +4,6 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Search = (props) => {
 
-  // const [searchTerm, setSearchTerm] = useState("");
-  // const [valid, setValid] = useState(false);
-
-  // const doSearch = (event) => {
-  //   event.preventDefault();
-  // }
-
-  // const handleChange = (event) => {
-  //   setSearchTerm(event.target.value);
-  //   setValid(event.target.value.trim().length > 0)
-  // }
-
   const [searchClaimId, setSearchClaimId] = useState("");
   const [searchPolicyNo, setSearchPolicyNo] = useState("");
   const [searchSurname, setSearchSurname] = useState("");
@@ -23,38 +11,20 @@ const Search = (props) => {
   const [valid, setValid] = useState(false);
 
   const navigate = useNavigate();
-
-  // commented out code set use state depending on which input field
-  //now it sets surname only  
+ 
   const doSearch = (event) => {
     event.preventDefault();
-    // if (!(searchSurname === null)) {
-    // props.setSearchSurname(searchSurname.trim());
-    // }
-    // if (!(searchClaimId === null)) {
-    //   props.setSearchClaimId(searchClaimId.trim());
-    // } else if (!(searchPolicyNo === null)){
-    //   props.setSearchPolicyNo(searchPolicyNo.trim());
-    // } else if (!(searchSurname === null)) {
-    //   props.setSearchSurname(searchSurname.trim());
-    // }
-
-    //this for surname and policy number.   
-    if (searchSurname !== "") {
-      props.setSearchSurname(searchSurname.trim());
-      navigate("/findAClaim/" + searchSurname.trim());   //to update URL, rec.8, 18.7.22
-    }  else if (searchPolicyNo !== "") {
+    if (searchClaimId !== "") {
+      props.setSearchClaimId(searchClaimId.trim());
+    } else if (searchPolicyNo !== "") {
       props.setSearchPolicyNo(searchPolicyNo.trim());
+    } else if (searchSurname !== "") {
+      props.setSearchSurname(searchSurname.trim());;
     }
-
-
   }
 
   //to update URL, rec.8, 18.7.22
   // const select
-
-
-
   const handleChangeClaimId = (event) => {
     setSearchClaimId(event.target.value);
     setValid(event.target.value.trim().length > 0)

@@ -60,29 +60,12 @@ const Claims = (props) => {
 
   useEffect(() => { getClaimDataFromServer() }, []);
 
-
-  // const claims = getAllClaims();
-  // const displayClaims = claims.map((claim, index) => <ClaimRow key={index} claimRow={claim} />);
-
-  // const claims = getAllClaims();
-  // const displayClaims = claims
-  //   .map(claim =>
-  //     <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} policyNumber={claim.policyNumber} surname={claim.surname}
-  //       claimOpenDate={claim.claimOpenDate} status={claim.status} />);
-
-  // line below commented out after using  axios call 
-  // const claims = getAllClaims();
-
   const displayClaims = claims
-    // .filter (claim => props.searchTerm === claim.claimId ||
-    //                   props.searchTerm === claim.policyNumber ||
-    //                   props.searchTerm === claim.surname)my pro
-    .filter(claim => (props.searchSurname === claim.surname) || (props.searchPolicyNo === claim.status))
-    // .filter(claim => (props.searchSurname === claim.status) )
+    .filter(claim  => (parseInt(props.searchClaimId) === claim.claimId) ||      
+                      (parseInt(props.searchPolicyNo) === claim.policyNumber) ||
+                      (props.searchSurname === claim.surname))
     .map(claim => <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} policyNumber={claim.policyNumber} surname={claim.surname}
                   claimOpenDate={claim.claimOpenDate} status={claim.status}/> );
-
-
   return <Fragment>
 
     <table className="claims-table">
@@ -104,11 +87,5 @@ const Claims = (props) => {
     {claims.length === 0 && <p>Please wait... loading data</p>}
   </Fragment>
 }
-
-// return <div>
-//   <ReactTable
-//     data={claims}
-//     columns={claimTableColumns} />
-// </div
 
 export default Claims; 

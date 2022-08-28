@@ -5,7 +5,7 @@ import './NewClaim.css';
 const RegisterClaim = () => {
 
   const emptyTransaction = {
-    policyNumber: "", insuranceType: "", name: "" }
+    policyNumber: "", surname: "" }
 
   const newClaimReducer = (existingState, data) => {
     return {...existingState, [data.field] : data.value}
@@ -23,7 +23,7 @@ const RegisterClaim = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    // console.log(newClaim);
+    console.log(newClaim);
     setSaving(true);
     setMessage("plase wait - saving")
     const response = addNewClaim(newClaim);
@@ -42,7 +42,6 @@ const RegisterClaim = () => {
       })
   }
 
-
   return <Fragment>
 
     <div className="newClaim-form">
@@ -53,12 +52,11 @@ const RegisterClaim = () => {
         <label htmlFor="policyNumber">Policy number</label>
         <input onChange={handleChange} id="policyNumber" value={newClaim.policyNumber} type="text" />
 
+        <label htmlFor="surname">Surname</label>
+        <input onChange={handleChange} id="surname" value={newClaim.surname} type="text" />
 
-        <label htmlFor="insuranceType<">Insurance type</label>
-        <input onChange={handleChange} id="insuranceType" value={newClaim.insuranceType} type="text" />
-
-        <label htmlFor="name">Name</label>
-        <input onChange={handleChange} id="name" value={newClaim.name} type="text" />
+        {/* <label htmlFor="insuranceType<">Insurance type</label>
+        <input onChange={handleChange} id="insuranceType" value={newClaim.insuranceType} type="text" /> */}
 
         {/* <label htmlFor=""></label>
         <input onChange={handleChange} id="" value={newClaim} type="text" />
