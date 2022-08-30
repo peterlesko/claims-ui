@@ -17,6 +17,9 @@ const claimsReducer = (state = initialState, action) => {
   else if (action.type === "save-claims") {
     return { ...state, claims: action.value, lastFetch: new Date().getTime()}
   }
+  // else if (action.type === "save-claims") {
+  //   return { ...state, claims: action.value, lastFetch: new Date().getTime()}
+  // }
   else {
     console.log("unknown redux action" + action.type);
     return state;

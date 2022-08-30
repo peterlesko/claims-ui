@@ -13,6 +13,7 @@ import NewClaim from './Components/Claim/NewClaim/NewClaim';
 import AssessClaims from './Components/Claim/AssessClaims/AssessClaims';
 import { Provider } from 'react-redux';
 import claimsStore from './Components/Site/Store/Store';
+import ViewClaim from './Components/Claim/ViewClaim/ViewClaim';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
                   <Route path="/newClaim" element={<NewClaim/>} />
                   <Route path="/findAClaim" element={<FindAClaim/>} />
                   <Route path="/findAClaim/:surname" element={<FindAClaim />} />
+                  <Route path="/view/:claimId" element={<ViewClaim/>} />
                   <Route path="/existingClaim" element={<ExistingClaim/>} />
                 <Route path="/assessClaims" element={<AssessClaims/>} />
                 </Routes>

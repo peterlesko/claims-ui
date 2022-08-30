@@ -4,14 +4,14 @@ import './NewClaim.css';
 
 const RegisterClaim = () => {
 
-  const emptyTransaction = {
+  const emptyClaim = {
     policyNumber: "", surname: "" }
 
   const newClaimReducer = (existingState, data) => {
     return {...existingState, [data.field] : data.value}
   }
     
-  const [newClaim, dispatch] = useReducer(newClaimReducer, emptyTransaction);
+  const [newClaim, dispatch] = useReducer(newClaimReducer, emptyClaim);
 
   const handleChange = (event) => {
     const dataToChange = { field: event.target.id, value: event.target.value };

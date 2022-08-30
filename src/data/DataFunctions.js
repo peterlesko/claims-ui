@@ -55,6 +55,14 @@ export const addNewClaim = (claim) => {
     data: claim});
 }
 
+export const getClaim = (claimId) => {
+  return axios({
+    url : `http://localhost:8080/api/claim/${claimId}`,
+    method: "GET",
+    headers : { 'Accept': 'application/json'}
+  });
+}
+
 
 
 

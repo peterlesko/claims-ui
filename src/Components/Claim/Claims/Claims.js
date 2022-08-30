@@ -12,12 +12,11 @@ const Claims = (props) => {
   const [claims, setClaims] = useState([]);
   
   const dispatch = useDispatch();   //code for Redux, must be declared on top level
-  const claimInRedux = useSelector(state => state.claims);   //code for Redux
+  const claimsInRedux = useSelector(state => state.claims); // extract claims
   const lastFetchInRedux = useSelector(state => state.lastFetch);
 
   const getClaimDataFromServer = () => {
     // const paymentsPromise = getAllPaymentsRestVersion(); 
-
     let timedifference = 999999;
     if (lastFetchInRedux != null) {
       const now = new Date();
@@ -26,9 +25,9 @@ const Claims = (props) => {
     console.log("timedifference", timedifference);
     //if we have a data in the store, setClaims(that data)
     //else do the rest of this.
-    if (claimInRedux.length > 0 && timedifference < 60000) {
-      setClaims(claimInRedux);
-      console.log("got the transactions from redux");
+    if (claimsInRedux.length > 0 && timedifference < 60000) {
+      setClaims(claimsInRedux);
+      console.log("got claims from redux");
     }
     else {
       const claimsPromise = getAllClaimsAxiosVersion();
