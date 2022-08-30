@@ -47,6 +47,7 @@ const Search = (props) => {
         <h2 className="search-heading">Search claims</h2>
 
         <form onSubmit={doSearch}>
+          
           <label htmlFor="claimId">Claim Id *</label>
           <input onChange={handleChangeClaimId} value={searchClaimId} id="claimId" type="text" />
           {/* <input type="text" id="claimId" /> */}

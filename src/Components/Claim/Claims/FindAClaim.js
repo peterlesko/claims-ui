@@ -20,12 +20,13 @@ const FindAClaim = () => {
   //   <Claims searchSurname={searchSurname} />
   //   </Fragment>)can you pls paste http://localhost:8080/api/healthpeter
   // }
-
-  const [searchSurname, setSearchSurname] = useState("");
+  const [searchClaimId, setSearchClaimId] = useState("");
   const [searchPolicyNo, setSearchPolicyNo] = useState("");
+  const [searchSurname, setSearchSurname] = useState("");
+
   return (<Fragment>
-      <Search setSearchSurname={setSearchSurname} setSearchPolicyNo={setSearchPolicyNo} />
-      <Claims searchSurname={searchSurname} searchPolicyNo={searchPolicyNo} />
+      <Search setSearchClaimId={setSearchClaimId} setSearchPolicyNo={setSearchPolicyNo} setSearchSurname={setSearchSurname} />
+      <Claims searchClaimId={searchClaimId} searchPolicyNo={searchPolicyNo} searchSurname={searchSurname}  />
     </Fragment>)
   }
 

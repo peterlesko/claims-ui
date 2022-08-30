@@ -60,8 +60,8 @@ const Claims = (props) => {
   useEffect(() => { getClaimDataFromServer() }, []);
 
   const displayClaims = claims
-    .filter(claim  => (parseInt(props.searchClaimId) === claim.claimId) ||      
-                      (parseInt(props.searchPolicyNo) === claim.policyNumber) ||
+    .filter(claim  => ((props.searchClaimId) === (claim.claimId.toString())) ||      
+                      ((props.searchPolicyNo) === (claim.policyNumber.toString())) ||
                       (props.searchSurname === claim.surname))
     .map(claim => <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} policyNumber={claim.policyNumber} surname={claim.surname}
                   claimOpenDate={claim.claimOpenDate} status={claim.status}/> );
