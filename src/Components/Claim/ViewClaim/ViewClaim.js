@@ -24,7 +24,7 @@ const ViewClaim = () => {
 
   return (
       <Fragment>
-        <h2>View claim {claim.claimId}</h2>
+        <h2>View claim ID: {claim.claimId}</h2>
         <table className="claims-table">
           <tbody>
             <tr>

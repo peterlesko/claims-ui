@@ -24,8 +24,8 @@ const FindAClaim = () => {
   const [searchSurname, setSearchSurname] = useState("");
   const [searchPolicyNo, setSearchPolicyNo] = useState("");
   return (<Fragment>
-    <Search setSearchSurname={setSearchSurname} setSearchPolicyNo={setSearchPolicyNo} />
-    <Claims searchSurname={searchSurname} searchPolicyNo={searchPolicyNo} />
+      <Search setSearchSurname={setSearchSurname} setSearchPolicyNo={setSearchPolicyNo} />
+      <Claims searchSurname={searchSurname} searchPolicyNo={searchPolicyNo} />
     </Fragment>)
   }
 
