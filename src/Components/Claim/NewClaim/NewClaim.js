@@ -1,4 +1,4 @@
-import { Fragment, useReducer, useState, useSyncExternalStore } from 'react';
+import { Fragment, useEffect, useReducer, useState, useSyncExternalStore } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { addNewClaim } from '../../../data/DataFunctions';
@@ -6,28 +6,27 @@ import './NewClaim.css';
 
 const RegisterClaim = () => {
 
-  let emptyClaim = { policyNumber: "", surname: "" }
+  const emptyClaim = { policyNumber: "", surname: "" }
 
   const newClaimReducer = (existingState, data) => {
     return {...existingState, [data.field] : data.value}
   }
     
   const params = useParams();
-                                                                  console.log("Params is: " + params);
   const claimToEditClaimId = params.claimId;
-                                                                  console.log("claim to Edit ClaimId: " + claimToEditClaimId);
+
+  const [pageChanged, setPageChanged] = useState(params.claimId);
+
+  useEffect( () => {
+    setPageChanged(params.claimId)
+  }, [params.claimId]);
 
   const editMode = claimToEditClaimId != null;
   const claimToEdit = useSelector(state => state.claimToEdit);
 
-  if (editMode) {
-                                                                    console.log("KKKKKKKKKKKKKKKKKKKK");
-                                                                    console.log("Loading: ", claimToEdit);
-    emptyClaim = claimToEdit; 
-  }
-
-  const [newClaim, dispatch] = useReducer(newClaimReducer, emptyClaim);
-
+  const [newClaim, dispatch] = useReducer(newClaimReducer, 
+                                          editMode ? claimToEdit : emptyClaim );
+                                            
   const handleChange = (event) => {
     const dataToChange = { field: event.target.id, value: event.target.value };
     dispatch(dataToChange); 
@@ -60,10 +59,10 @@ const RegisterClaim = () => {
   return <Fragment>
 
     <div className="newClaim-form">
-      <h2>Register new claim</h2>
-
       <form onSubmit={submitForm}>
-
+        {/* <h2>Register new claim</h2> */}
+        <h2>{editMode ? "Edit" : "Register new"} claim</h2>
+        
         <label htmlFor="policyNumber">Policy number</label>
         <input onChange={handleChange} id="policyNumber" value={newClaim.policyNumber} type="text" />
 
