@@ -1,7 +1,10 @@
 // import { createStore, configureStore } from "redux";
 import {configureStore } from '@reduxjs/toolkit';
+import { act } from 'react-dom/test-utils';  
 
-const initialState = {surname : [], lastFetch : null, userName : "Matt", claims: []}
+const initialState = {surname : [], lastFetch : null, userName : "Matt", 
+                      claims : [],
+                      claimToEdit : {}};
 
 const claimsReducer = (state = initialState, action) => {
 
@@ -17,9 +20,9 @@ const claimsReducer = (state = initialState, action) => {
   else if (action.type === "save-claims") {
     return { ...state, claims: action.value, lastFetch: new Date().getTime()}
   }
-  // else if (action.type === "save-claims") {
-  //   return { ...state, claims: action.value, lastFetch: new Date().getTime()}
-  // }
+  else if (action.type === "set-claim-to-edit") {
+    return {...state, claimToEdit : action.value}
+  }
   else {
     console.log("unknown redux action" + action.type);
     return state;

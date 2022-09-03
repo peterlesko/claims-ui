@@ -1,15 +1,19 @@
-import { Fragment, useState } from "react";
-import { useParams } from "react-router";
+import { Fragment, useEffect, useReducer, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router";
 import { getClaim } from "../../../data/DataFunctions";
 
 const ViewClaim = () => {
 
-  const emptyClaim = { 
-    policyNumber: "", surname: "" }
+  const emptyClaim = { claimId: "", policyNumber: "", surname: "" }
+  // const emptyClaim = { policyNumber: "", surname: "" }
 
   const [claim, setClaim] = useState(emptyClaim);
  
+  const navigate = useNavigate();
+
   const params = useParams();
+  useEffect( () => {
   getClaim(params.claimId)
     .then(response => {
       if (response.status === 200) {
@@ -20,7 +24,15 @@ const ViewClaim = () => {
       }
     })
     .catch(error => console.log("error occured", error));
+  }, [] );
 
+    const dispatch = useDispatch(); 
+    
+    const edit = () => {
+      console.log("Claim is : " + claim.policyNumber);
+      dispatch({type : "set-claim-to-edit", value : claim });
+      navigate("/edit/" + params.claimId);
+    }
 
   return (
       <Fragment>
@@ -41,7 +53,10 @@ const ViewClaim = () => {
             </tr>
           </tbody>
         </table>
-
+        {/* {useReducer.role === "MANAGER" & <button>edit</button> }  //for roles */} 
+        {/* <button>edit</button>  */}
+        {/* <button onClick={edit} type="submit" className="Search">edit2</button> */}
+        <button onClick={edit}>edit</button>
       </Fragment>
   );
 }

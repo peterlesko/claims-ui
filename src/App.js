@@ -24,11 +24,19 @@ function App() {
             <PageHeader/>
                 <Routes>
                   <Route path="/newClaim" element={<NewClaim/>} />
+
+                  <Route path="/edit/:claimId" element={<NewClaim/>} />
+
                   <Route path="/findAClaim" element={<FindAClaim/>} />
                   <Route path="/findAClaim/:surname" element={<FindAClaim />} />
                   <Route path="/view/:claimId" element={<ViewClaim/>} />
                   <Route path="/existingClaim" element={<ExistingClaim/>} />
-                <Route path="/assessClaims" element={<AssessClaims/>} />
+
+                  <Route path="/assessClaims" element={<AssessClaims/>} />
+
+
+                  <Route path="/" element= {<h1>Welcome to the application</h1>} />
+                  {/* <Route path="*" element= {<PageNotFound />} /> */}
                 </Routes>
             <Footer/>
           </div>

@@ -36,5 +36,4 @@ const FindAClaim = () => {
   //   </Fragment>)
   // }
 
-
 export default FindAClaim;

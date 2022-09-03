@@ -1,21 +1,36 @@
-import { Fragment, useReducer, useState } from 'react';
+import { Fragment, useReducer, useState, useSyncExternalStore } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 import { addNewClaim } from '../../../data/DataFunctions';
 import './NewClaim.css';
 
 const RegisterClaim = () => {
 
-  const emptyClaim = {
-    policyNumber: "", surname: "" }
+  let emptyClaim = { policyNumber: "", surname: "" }
 
   const newClaimReducer = (existingState, data) => {
     return {...existingState, [data.field] : data.value}
   }
     
+  const params = useParams();
+                                                                  console.log("Params is: " + params);
+  const claimToEditClaimId = params.claimId;
+                                                                  console.log("claim to Edit ClaimId: " + claimToEditClaimId);
+
+  const editMode = claimToEditClaimId != null;
+  const claimToEdit = useSelector(state => state.claimToEdit);
+
+  if (editMode) {
+                                                                    console.log("KKKKKKKKKKKKKKKKKKKK");
+                                                                    console.log("Loading: ", claimToEdit);
+    emptyClaim = claimToEdit; 
+  }
+
   const [newClaim, dispatch] = useReducer(newClaimReducer, emptyClaim);
 
   const handleChange = (event) => {
     const dataToChange = { field: event.target.id, value: event.target.value };
-    dispatch(dataToChange);
+    dispatch(dataToChange); 
   }
 
   const [message, setMessage] = useState("");
@@ -27,9 +42,9 @@ const RegisterClaim = () => {
     setSaving(true);
     setMessage("plase wait - saving")
     const response = addNewClaim(newClaim);
-    response.then(result => {
+    response.then(result => { 
       if (result.status === 200) {
-        setMessage("Claim added with id " + result.data.id)
+        setMessage("Claim added with id " + result.data.claimId)
       }
       else {
         setMessage("someting went wrong ", result.statusText)
@@ -62,32 +77,6 @@ const RegisterClaim = () => {
         <input onChange={handleChange} id="" value={newClaim} type="text" />
 
         <label htmlFor=""></label>
-        <input onChange={handleChange} id="" value={newClaim} type="text" />
-
-        <label htmlFor=""></label>
-        <input onChange={handleChange} id="" value={newClaim} type="text" />
-
-        <label htmlFor=""></label>
-        <input onChange={handleChange} id="" value={newClaim} type="text" />
-
-        <label htmlFor=""></label>
-        <input onChange={handleChange} id="" value={newClaim} type="text" />
-        <label htmlFor=""></label>
-        <input onChange={handleChange} id="" value={newClaim} type="text" />
-
-        <label htmlFor=""></label>
-        <input onChange={handleChange} id="" value={newClaim} type="text" />
-
-        <label htmlFor=""></label>
-        <input onChange={handleChange} id="" value={newClaim} type="text" />
-
-        <label htmlFor=""></label>
-        <input onChange={handleChange} id="" value={newClaim} type="text" />
-
-        <label htmlFor=""></label>
-        <input onChange={handleChange} id="" value={newClaim} type="text" />
-
-        <label htmlFor=""></label>
         <input onChange={handleChange} id="" value={newClaim} type="text" /> */}
 
         {/* <button disabled={!valid} className="registerclaim_button" type="submit">Save</button> */}
@@ -101,52 +90,6 @@ const RegisterClaim = () => {
 
   </Fragment>
 
-  
-
-
-
-
-  // <form className="addTransactionsForm" onSubmit={submitForm} >
-  //   <h2>New transaction</h2>
-  //   <label htmlFor="orderId">Order Id</label>
-  //   <input type="text" id="orderId" onChange={handleChange} value={newTransaction.orderId} />
-  //   {/* <input type="text" id="orderId" onChange={handleChange} value={orderId} /> */}
-  //   <br />
-  //   <label htmlFor="date">Date</label>
-  //   <input type="date" id="date" onChange={handleChange} value={newTransaction.date} />
-  //   {/* <input type="date" id="date" onChange={handleChange} value={date} /> */}
-  //   <br />
-  //   <label htmlFor="country">Country</label>
-  //   <input type="text" id="country" onChange={handleChange} value={newTransaction.country} />
-  //   <br />
-  //   <label htmlFor="currency">Currency</label>
-  //   <input type="text" id="currency" onChange={handleChange} value={newTransaction.currency} />
-  //   <br />
-  //   <label htmlFor="amount">Amount</label>
-  //   <input type="text" id="amount" onChange={handleChange} value={newTransaction.amount} />
-  //   <br />
-  //   <label htmlFor="taxCode">Tax Code</label>
-  //   <input type="text" id="taxCode" onChange={handleChange} value={newTransaction.taxCode} />
-  //   <br />
-  //   <label htmlFor="amount">Tax Rate</label>
-  //   <input type="text" id="taxRate" onChange={handleChange} value={newTransaction.taxRate} />
-  //   <br />
-  //   <label htmlFor="type">Type</label>
-  //   <input type="text" id="type" onChange={handleChange} value={newTransaction.type} />
-  //   <br />
-  //   <button disabled={saving} type="submit">Save</button>
-  //   <p>{message}</p>
-  // </form>
-
-
-  
-  // return (
-  //   <div className="registerClaim">
-  //     <h2 class="formHeader">
-  //       <b>Register new claim</b>
-  //     </h2>
-  //   </div>
-  // )
 };
 
 export default RegisterClaim;
