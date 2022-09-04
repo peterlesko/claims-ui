@@ -81,10 +81,26 @@ const RegisterClaim = () => {
   return <Fragment>
 
     <div className="newClaim-form">
+
       <form onSubmit={submitForm}>
         {/* <h2>Register new claim</h2> */}
         <h2>{editMode ? "Edit" : "Register new"} claim</h2>
-        
+
+        <div  className="radio-container">        
+        <label>Claim type</label>
+
+          <input type="radio" id="property" value="property" name="type"/>
+          <label className="radio-label" htmlFor="property">Property</label>
+
+          <input type="radio" id="auto" value="auto" name="type"/>          
+          <label className="radio-label" htmlFor="auto">Auto</label>
+
+          <input type="radio" id="pet" value="pet" name="type"/>
+          <label className="radio-label" htmlFor="pet">Pet</label>
+
+        </div>
+
+
         <label htmlFor="policyNumber">Policy number</label>
         <input onChange={handleChange} id="policyNumber" value={newClaim.policyNumber} type="text" />
 
