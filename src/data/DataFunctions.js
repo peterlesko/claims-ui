@@ -63,7 +63,13 @@ export const getClaim = (claimId) => {
   });
 }
 
-
+export const updateClaim = ( claimId, data) => {
+  return axios({
+    url: "http://localhost:8080/api/claim/" + claimId,
+    method: "PUT",
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/JSON' },
+    data: data});
+}
 
 
 

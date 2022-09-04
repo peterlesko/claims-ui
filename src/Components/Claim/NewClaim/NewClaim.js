@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useReducer, useState, useSyncExternalStore } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router';
-import { addNewClaim } from '../../../data/DataFunctions';
+import { useNavigate, useParams } from 'react-router';
+import { addNewClaim, updateClaim } from '../../../data/DataFunctions';
 import './NewClaim.css';
 
 const RegisterClaim = () => {
@@ -18,8 +18,7 @@ const RegisterClaim = () => {
   const [pageChanged, setPageChanged] = useState(params.claimId);
 
   useEffect( () => {
-    setPageChanged(params.claimId)
-  }, [params.claimId]);
+    setPageChanged(params.claimId)}, [params.claimId]);
 
   const editMode = claimToEditClaimId != null;
   const claimToEdit = useSelector(state => state.claimToEdit);
@@ -32,21 +31,44 @@ const RegisterClaim = () => {
     dispatch(dataToChange); 
   }
 
+  const {claimId, policyNumber, surname} = newClaim;
+
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
+
+  const navigate = useNavigate();
 
   const submitForm = (e) => {
     e.preventDefault();
     console.log(newClaim);
     setSaving(true);
-    setMessage("plase wait - saving")
-    const response = addNewClaim(newClaim);
+    setMessage("please wait - saving")
+    
+    let response;
+
+    if (editMode) {
+      let data = {};
+
+      if (policyNumber !== claimToEdit.policyNumber) {
+        data = {...data, policyNumber : policyNumber};
+      };
+      if (surname !== claimToEdit.surname) {
+        data = {...data, surname : surname};
+      };
+
+      response = updateClaim(params.claimId, data);
+    } 
+    else {
+      response = addNewClaim(newClaim);
+    }
+
     response.then(result => { 
       if (result.status === 200) {
-        setMessage("Claim added with id " + result.data.claimId)
+        // setMessage("Claim added with id " + result.data.claimId)
+        navigate("/find/" + result.data.claimId);
       }
       else {
-        setMessage("someting went wrong ", result.statusText)
+        setMessage("something went wrong ", result.statusText)
       }
       setSaving(false);
     })
