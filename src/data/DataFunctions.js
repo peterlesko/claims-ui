@@ -29,6 +29,11 @@ export const getAllClaims = () => {
         type: "property", estimatedValue: 300, claimOpenDate: "2022-05-22",
         claimReason: "window broken by neighbour's child playing football",
         address: "27 Summer View, Differentown"
+    },
+    {
+      claimId: 6, policyNumber: 3377, title: "Mr", firstName: "Steve", surname: "Cruz", status: "open",
+      type: "pet", estimatedValue: 120, claimOpenDate: "2022-04-18", claimReason: "burned",
+      amount : 130, animalType: "cat", breed: "Bengal", incidentDate: "2022-04-15"
     }
     // { id: 1, type: "Motor", policyNumber: 147854925639, Name: "Mark Smith", startDate: "2018-08-02",  },
     //   {id: 2, policyNumber: 4406, title: "Mrs"}

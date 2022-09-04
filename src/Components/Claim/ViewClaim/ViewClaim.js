@@ -5,7 +5,7 @@ import { getClaim } from "../../../data/DataFunctions";
 
 const ViewClaim = () => {
 
-  const emptyClaim = { claimId: "", policyNumber: "", surname: "" }
+  const emptyClaim = { claimId: "", policyNumber: "", surname: "", status: "" }
   // const emptyClaim = { policyNumber: "", surname: "" }
 
   const [claim, setClaim] = useState(emptyClaim);
@@ -26,13 +26,13 @@ const ViewClaim = () => {
     .catch(error => console.log("error occured", error));
   }, [] );
 
-    const dispatch = useDispatch(); 
-    
-    const edit = () => {
-      console.log("Claim is : " + claim.policyNumber);
-      dispatch({type : "set-claim-to-edit", value : claim });
-      navigate("/edit/" + params.claimId);
-    }
+  const dispatch = useDispatch(); 
+  
+  const edit = () => {
+    console.log("Claim is : " + claim.policyNumber);
+    dispatch({type : "set-claim-to-edit", value : claim });
+    navigate("/edit/" + params.claimId);
+  }
 
   return (
       <Fragment>
@@ -50,6 +50,10 @@ const ViewClaim = () => {
             <tr>
               <th>Surname</th>
               <td>{claim.surname}</td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>{claim.status}</td>
             </tr>
           </tbody>
         </table>

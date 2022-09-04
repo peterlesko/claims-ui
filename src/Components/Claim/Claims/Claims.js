@@ -63,8 +63,10 @@ const Claims = (props) => {
     .filter(claim  => ((props.searchClaimId) === (claim.claimId.toString())) ||      
                       ((props.searchPolicyNo) === (claim.policyNumber.toString())) ||
                       (props.searchSurname === claim.surname))
-    .map(claim => <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} policyNumber={claim.policyNumber} surname={claim.surname}
+    .map(claim => <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} 
+                  policyNumber={claim.policyNumber} surname={claim.surname}
                   claimOpenDate={claim.claimOpenDate} status={claim.status}/> );
+  
   return <Fragment>
 
     <table className="claims-table">

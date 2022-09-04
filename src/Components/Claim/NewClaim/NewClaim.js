@@ -91,7 +91,7 @@ const RegisterClaim = () => {
         <label htmlFor="surname">Surname</label>
         <input onChange={handleChange} id="surname" value={newClaim.surname} type="text" />
 
-        {/* <label htmlFor="insuranceType<">Insurance type</label>
+        {/* <label htmlFor="insuranceType">Insurance type</label>
         <input onChange={handleChange} id="insuranceType" value={newClaim.insuranceType} type="text" /> */}
 
         {/* <label htmlFor=""></label>
