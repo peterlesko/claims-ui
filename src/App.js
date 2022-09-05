@@ -29,10 +29,14 @@ function App() {
 
                   <Route path="/findAClaim" element={<FindAClaim/>} />
                   <Route path="/findAClaim/:surname" element={<FindAClaim />} />
+
                   <Route path="/view/:claimId" element={<ViewClaim/>} />
                   <Route path="/existingClaim" element={<ExistingClaim/>} />
 
                   <Route path="/assessClaims" element={<AssessClaims/>} />
+
+                  {/* <Route path="/find" element={<FindAClaim/>} /> */}
+                  <Route path="/find/:claimId" element={<FindAClaim/>} />
 
 
                   <Route path="/" element= {<h1>Welcome to the application</h1>} />

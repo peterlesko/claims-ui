@@ -6,7 +6,7 @@ import './NewClaim.css';
 
 const RegisterClaim = () => {
 
-  const emptyClaim = { policyNumber: "", surname: "" }
+  const emptyClaim = { type: "", policyNumber: "", surname: "" }
 
   const newClaimReducer = (existingState, data) => {
     return {...existingState, [data.field] : data.value}
@@ -31,10 +31,11 @@ const RegisterClaim = () => {
     dispatch(dataToChange); 
   }
 
-  const {claimId, policyNumber, surname} = newClaim;
+  const {claimId, policyNumber, surname, type} = newClaim;
 
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
+  // const [claimType, setClaimType] = useState("");
 
   const navigate = useNavigate();
 
@@ -64,8 +65,9 @@ const RegisterClaim = () => {
 
     response.then(result => { 
       if (result.status === 200) {
-        // setMessage("Claim added with id " + result.data.claimId)
-        navigate("/find/" + result.data.claimId);
+        // navigate("/find/" + result.data.claimId);
+        navigate("/findAClaim/" + result.data.surname);
+        // navigate("/newClaim/");
       }
       else {
         setMessage("something went wrong ", result.statusText)
@@ -84,22 +86,22 @@ const RegisterClaim = () => {
 
       <form onSubmit={submitForm}>
         {/* <h2>Register new claim</h2> */}
+        
         <h2>{editMode ? "Edit" : "Register new"} claim</h2>
 
         <div  className="radio-container">        
-        <label>Claim type</label>
+          <label>Claim type</label>
 
-          <input type="radio" id="property" value="property" name="type"/>
+          <input  onChange={handleChange} id="property" value={newClaim.type} name="type" type="radio"/>
           <label className="radio-label" htmlFor="property">Property</label>
 
-          <input type="radio" id="auto" value="auto" name="type"/>          
+          <input onChange={handleChange} id="auto" value={newClaim.type} name="type" type="radio" />          
           <label className="radio-label" htmlFor="auto">Auto</label>
 
-          <input type="radio" id="pet" value="pet" name="type"/>
+          <input onChange={handleChange} id="pet" value={newClaim.type} name="type" type="radio"/>
           <label className="radio-label" htmlFor="pet">Pet</label>
 
         </div>
-
 
         <label htmlFor="policyNumber">Policy number</label>
         <input onChange={handleChange} id="policyNumber" value={newClaim.policyNumber} type="text" />
@@ -107,23 +109,11 @@ const RegisterClaim = () => {
         <label htmlFor="surname">Surname</label>
         <input onChange={handleChange} id="surname" value={newClaim.surname} type="text" />
 
-        {/* <label htmlFor="insuranceType">Insurance type</label>
-        <input onChange={handleChange} id="insuranceType" value={newClaim.insuranceType} type="text" /> */}
-
-        {/* <label htmlFor=""></label>
-        <input onChange={handleChange} id="" value={newClaim} type="text" />
-
-        <label htmlFor=""></label>
-        <input onChange={handleChange} id="" value={newClaim} type="text" /> */}
-
-        {/* <button disabled={!valid} className="registerclaim_button" type="submit">Save</button> */}
-        {/* <button disabled={saving className="registerclaim_button" type="submit">Save</button> */}
-
         <button disabled={saving} className="registerclaim_button" type="submit">Save</button>
         <p>{message}</p>
   
       </form>
-    </div>
+    </div> 
 
   </Fragment>
 

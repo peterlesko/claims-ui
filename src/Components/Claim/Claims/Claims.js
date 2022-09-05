@@ -60,6 +60,7 @@ const Claims = (props) => {
   useEffect(() => { getClaimDataFromServer() }, []);
 
   const displayClaims = claims
+  
     .filter(claim  => ((props.searchClaimId) === (claim.claimId.toString())) ||      
                       ((props.searchPolicyNo) === (claim.policyNumber.toString())) ||
                       (props.searchSurname === claim.surname))

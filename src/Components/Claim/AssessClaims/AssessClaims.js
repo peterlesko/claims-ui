@@ -51,7 +51,7 @@ const AssessClaims = (props) => {
   useEffect(() => { getClaimDataFromServer() }, []);
 
   const displayClaims = claims
-    .filter(claim => claim.status === "closed")
+    .filter(claim => claim.status === "open")
     .map(claim => <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} 
                   policyNumber={claim.policyNumber} surname={claim.surname}
                   claimOpenDate={claim.claimOpenDate} status={claim.status}/> );
