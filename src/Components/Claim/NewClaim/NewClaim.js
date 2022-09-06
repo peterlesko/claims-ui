@@ -30,7 +30,7 @@ const RegisterClaim = () => {
                                           
   const handleChange = (event) => {
     setSelectedTypeRadio(event.target.value);
-    console.log(">>>>>>>>>>>>>>>>>>    "  + selectedTypeRadio);
+    console.log(">>>>>>>>>>>>>>>>>> selectedTypeRadio:  "  + selectedTypeRadio);
     const dataToChange = { field: event.target.id, value: event.target.value };
     dispatch(dataToChange); 
   }
@@ -99,7 +99,7 @@ const RegisterClaim = () => {
         <div  className="radio-container">        
           <label>Claim type</label>
 
-          <input onChange={handleChange} checked={selectedTypeRadio === "property"} 
+          {/* {/* <input onChange={handleChange} checked={type === "property"} 
           id="property" value={newClaim.type} name="type" type="radio"/>
           <label className="radio-label" htmlFor="property">Property</label>
 
@@ -108,8 +108,21 @@ const RegisterClaim = () => {
           <label className="radio-label" htmlFor="auto">Auto</label>
 
           <input onChange={handleChange}  checked={selectedTypeRadio === "pet"} 
-          id="pet" value={newClaim.type} name="type" type="radio"/>
+          id="pet" value={newClaim.type} name="type" type="radio"/> */}
+
+
+          <input onChange={handleChange} checked={type === "property"}
+          id="type" value="property" name="type" type="radio"/>
+          <label className="radio-label" htmlFor="property">Property</label>
+
+          <input onChange={handleChange} checked={type === "auto"}
+          id="type" value="auto" name="type" type="radio" />          
+          <label className="radio-label" htmlFor="auto">Auto</label>
+
+          <input onChange={handleChange}  checked={type === "pet"}
+          id="type" value="pet" name="type" type="radio"/>
           <label className="radio-label" htmlFor="pet">Pet</label>
+
 
           {/* <input onChange={handleChange} checked={selectedTypeRadio === "property"} 
           id="property" value={newClaim.type} name="type" type="radio"/>

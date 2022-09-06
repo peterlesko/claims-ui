@@ -34,6 +34,11 @@ const ViewClaim = () => {
     navigate("/edit/" + params.claimId);
   }
 
+  const assessClaim = () => {
+    dispatch({type : "set-claim-to-edit", value : claim });
+    navigate("/assessClaim/" + params.claimId);
+  }
+
   return (
       <Fragment>
         <h2>View claim ID: {claim.claimId}</h2>
@@ -61,6 +66,7 @@ const ViewClaim = () => {
         {/* <button>edit</button>  */}
         {/* <button onClick={edit} type="submit" className="Search">edit2</button> */}
         <button onClick={edit}>edit</button>
+        <button onClick={assessClaim}>Asses claim</button>
       </Fragment>
   );
 }

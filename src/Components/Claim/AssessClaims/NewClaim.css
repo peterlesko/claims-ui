@@ -1,0 +1,64 @@
+
+/* .formHeader {
+  text-align: center;
+  text-decoration: strong;
+  margin-bottom: 200px;
+} */
+
+.newClaim-form {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(210, 230, 200);
+  border: 1px #000 solid;
+  padding: 10px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.newClaim-form label {
+  width: 120px;
+  display: block; /*label is inline object, must be made a block */
+  float: left;
+  margin-right: 10px;
+}
+
+.newClaim-form input {
+  margin-bottom: 10px;
+  display: block;
+  /*clear: both; /*stops floating after input*/
+}
+
+.newClaim-form button {
+/* .search-claims button { */
+  background-color: rgb(193, 129, 159);
+  margin-left: 250px;
+  font-weight: bold;
+  /* margin-right: 4px; */
+    /* float: right; */
+
+    /* margin: 10px; */
+}
+
+@media only screen and (max-width: 768px) {
+  .newClaim-form {
+    width: 70%;
+    background: #7891d6;
+  }
+}
+
+/* .radio-container input  { */
+  form label.radio-label {
+  display: inline-block;
+  float: none;
+  width: fit-content;
+}
+
+input[type="radio"] {
+    display: inline-block;
+}
+
+.radio-container {
+  margin-bottom: 15px;
+}
+
