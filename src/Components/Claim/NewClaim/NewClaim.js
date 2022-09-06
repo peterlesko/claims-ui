@@ -26,7 +26,11 @@ const RegisterClaim = () => {
   const [newClaim, dispatch] = useReducer(newClaimReducer, 
                                           editMode ? claimToEdit : emptyClaim );
                                             
+  const [selectedTypeRadio, setSelectedTypeRadio] = useState("");
+                                          
   const handleChange = (event) => {
+    setSelectedTypeRadio(event.target.value);
+    console.log(">>>>>>>>>>>>>>>>>>    "  + selectedTypeRadio);
     const dataToChange = { field: event.target.id, value: event.target.value };
     dispatch(dataToChange); 
   }
@@ -61,6 +65,9 @@ const RegisterClaim = () => {
     } 
     else {
       response = addNewClaim(newClaim);
+      console.log("------------");
+      console.log(newClaim.type);
+      console.log("<<<<<<<<<<<<");
     }
 
     response.then(result => { 
@@ -92,6 +99,41 @@ const RegisterClaim = () => {
         <div  className="radio-container">        
           <label>Claim type</label>
 
+          <input onChange={handleChange} checked={selectedTypeRadio === "property"} 
+          id="property" value={newClaim.type} name="type" type="radio"/>
+          <label className="radio-label" htmlFor="property">Property</label>
+
+          <input onChange={handleChange} checked={selectedTypeRadio === "auto"} 
+          id="auto" value={newClaim.type} name="type" type="radio" />          
+          <label className="radio-label" htmlFor="auto">Auto</label>
+
+          <input onChange={handleChange}  checked={selectedTypeRadio === "pet"} 
+          id="pet" value={newClaim.type} name="type" type="radio"/>
+          <label className="radio-label" htmlFor="pet">Pet</label>
+
+          {/* <input onChange={handleChange} checked={selectedTypeRadio === "property"} 
+          id="property" value={newClaim.type} name="type" type="radio"/>
+          <label className="radio-label" htmlFor="property">Property</label>
+
+          <input onChange={handleChange} checked={selectedTypeRadio === "auto"} 
+          id="auto" value={newClaim.type} name="type" type="radio" />          
+          <label className="radio-label" htmlFor="auto">Auto</label>
+
+          <input onChange={handleChange}  checked={selectedTypeRadio === "pet"} 
+          id="pet" value={newClaim.type} name="type" type="radio"/>
+          <label className="radio-label" htmlFor="pet">Pet</label> */}
+
+
+          {/* <input  onChange={handleChange} id="property" value={newClaim.property} name="type" type="radio"/>
+          <label className="radio-label" htmlFor="property">Property</label>
+
+          <input onChange={handleChange} id="auto" value={newClaim.auto} name="type" type="radio" />          
+          <label className="radio-label" htmlFor="auto">Auto</label>
+
+          <input onChange={handleChange} id="pet" value={newClaim.pet} name="type" type="radio"/>
+          <label className="radio-label" htmlFor="pet">Pet</label> */}
+
+{/*           
           <input  onChange={handleChange} id="property" value={newClaim.type} name="type" type="radio"/>
           <label className="radio-label" htmlFor="property">Property</label>
 
@@ -99,7 +141,7 @@ const RegisterClaim = () => {
           <label className="radio-label" htmlFor="auto">Auto</label>
 
           <input onChange={handleChange} id="pet" value={newClaim.type} name="type" type="radio"/>
-          <label className="radio-label" htmlFor="pet">Pet</label>
+          <label className="radio-label" htmlFor="pet">Pet</label> */}
 
         </div>
 
@@ -108,6 +150,10 @@ const RegisterClaim = () => {
 
         <label htmlFor="surname">Surname</label>
         <input onChange={handleChange} id="surname" value={newClaim.surname} type="text" />
+
+        {/* style={{editMode: visible ? "block" : "none"}} */}
+        {/* <label htmlFor="status" style={{display: editMode ? "block" : "none"}} >Status</label>
+        <input onChange={handleChange} id="status" value={newClaim.status} type="text" style={{display: editMode ? "block" : "none"}} /> */}
 
         <button disabled={saving} className="registerclaim_button" type="submit">Save</button>
         <p>{message}</p>
