@@ -6,7 +6,10 @@ import './NewClaim.css';
 
 const RegisterClaim = () => {
 
-  const emptyClaim = { type: "", policyNumber: "", surname: "" }
+  // const emptyClaim = { type: "", date : new Date().toISOString().slice(0,10), 
+  //                     policyNumber: "", surname: ""};
+
+  const emptyClaim = { type: "new",  claimStartDate : "", policyNumber: "", surname: "" };
 
   const newClaimReducer = (existingState, data) => {
     return {...existingState, [data.field] : data.value}
@@ -35,7 +38,7 @@ const RegisterClaim = () => {
     dispatch(dataToChange); 
   }
 
-  const {claimId, policyNumber, surname, type} = newClaim;
+  const {claimId, policyNumber, surname, type, claimStartDate} = newClaim;
 
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
@@ -99,77 +102,102 @@ const RegisterClaim = () => {
         <div  className="radio-container">        
           <label>Claim type</label>
 
-          {/* {/* <input onChange={handleChange} checked={type === "property"} 
-          id="property" value={newClaim.type} name="type" type="radio"/>
-          <label className="radio-label" htmlFor="property">Property</label>
-
-          <input onChange={handleChange} checked={selectedTypeRadio === "auto"} 
-          id="auto" value={newClaim.type} name="type" type="radio" />          
-          <label className="radio-label" htmlFor="auto">Auto</label>
-
-          <input onChange={handleChange}  checked={selectedTypeRadio === "pet"} 
-          id="pet" value={newClaim.type} name="type" type="radio"/> */}
-
-
           <input onChange={handleChange} checked={type === "property"}
           id="type" value="property" name="type" type="radio"/>
           <label className="radio-label" htmlFor="property">Property</label>
 
-          <input onChange={handleChange} checked={type === "auto"}
-          id="type" value="auto" name="type" type="radio" />          
-          <label className="radio-label" htmlFor="auto">Auto</label>
+          <input onChange={handleChange} checked={type === "motor"}
+          id="type" value="motor" name="type" type="radio" />          
+          <label className="radio-label" htmlFor="motor">Motor</label>
 
           <input onChange={handleChange}  checked={type === "pet"}
           id="type" value="pet" name="type" type="radio"/>
           <label className="radio-label" htmlFor="pet">Pet</label>
-
-
-          {/* <input onChange={handleChange} checked={selectedTypeRadio === "property"} 
-          id="property" value={newClaim.type} name="type" type="radio"/>
-          <label className="radio-label" htmlFor="property">Property</label>
-
-          <input onChange={handleChange} checked={selectedTypeRadio === "auto"} 
-          id="auto" value={newClaim.type} name="type" type="radio" />          
-          <label className="radio-label" htmlFor="auto">Auto</label>
-
-          <input onChange={handleChange}  checked={selectedTypeRadio === "pet"} 
-          id="pet" value={newClaim.type} name="type" type="radio"/>
-          <label className="radio-label" htmlFor="pet">Pet</label> */}
-
-
-          {/* <input  onChange={handleChange} id="property" value={newClaim.property} name="type" type="radio"/>
-          <label className="radio-label" htmlFor="property">Property</label>
-
-          <input onChange={handleChange} id="auto" value={newClaim.auto} name="type" type="radio" />          
-          <label className="radio-label" htmlFor="auto">Auto</label>
-
-          <input onChange={handleChange} id="pet" value={newClaim.pet} name="type" type="radio"/>
-          <label className="radio-label" htmlFor="pet">Pet</label> */}
-
-{/*           
-          <input  onChange={handleChange} id="property" value={newClaim.type} name="type" type="radio"/>
-          <label className="radio-label" htmlFor="property">Property</label>
-
-          <input onChange={handleChange} id="auto" value={newClaim.type} name="type" type="radio" />          
-          <label className="radio-label" htmlFor="auto">Auto</label>
-
-          <input onChange={handleChange} id="pet" value={newClaim.type} name="type" type="radio"/>
-          <label className="radio-label" htmlFor="pet">Pet</label> */}
 
         </div>
 
         <label htmlFor="policyNumber">Policy number</label>
         <input onChange={handleChange} id="policyNumber" value={newClaim.policyNumber} type="text" />
 
+        <label htmlFor="name">Name</label>
+        <input onChange={handleChange} id="name" value={newClaim.name} type="text" />
+
         <label htmlFor="surname">Surname</label>
         <input onChange={handleChange} id="surname" value={newClaim.surname} type="text" />
+
+        <label htmlFor="claimStartDate">Claim Start Date</label>
+        <input onChange={handleChange} id="claimStartDate" value={newClaim.claimStartDate} type="date" /> 
+
+        <label htmlFor="amount">Amount</label>
+        <input onChange={handleChange} id="amount" value={newClaim.amount} type="text" /> 
+
+        <label htmlFor="claimReason">Claim Reason</label>
+        <input onChange={handleChange} id="claimReason" value={newClaim.claimReason} type="text" /> 
+
+        <label htmlFor="description">Description</label>
+        <input onChange={handleChange} id="description" value={newClaim.description} type="text" /> 
+
+        {selectedTypeRadio === "property" && (
+          <>
+          <label htmlFor="address">Address</label>
+          <input onChange={handleChange} id="address" value={newClaim.address} type="text" /> 
+          </>
+        )}
+
+        {selectedTypeRadio === "motor" && (
+          <>
+          <label htmlFor="motorMake">Make</label>
+          <input onChange={handleChange} id="motorMake" value={newClaim.motorMake} type="text" /> 
+
+          <label htmlFor="motorModel">Model</label>
+          <input onChange={handleChange} id="motorModel" value={newClaim.motorModel} type="text" /> 
+
+          <label htmlFor="motorYom">YOM</label>
+          <input onChange={handleChange} id="motorYom" value={newClaim.motorYom} type="text" /> 
+          </>
+        )}
+
+        {selectedTypeRadio === "pet" && (
+          <>
+          <label htmlFor="petType">Pet Type</label>
+          <input onChange={handleChange} id="petType" value={newClaim.petType} type="text" /> 
+
+          <label htmlFor="petBreed">Pet Breed</label>
+          <input onChange={handleChange} id="petBreed" value={newClaim.petBreed} type="text" /> 
+          </>
+        )}
+
+
+        <button disabled={saving} className="registerclaim_button" type="submit">Save</button>
+        <p>{message}</p>
+
 
         {/* style={{editMode: visible ? "block" : "none"}} */}
         {/* <label htmlFor="status" style={{display: editMode ? "block" : "none"}} >Status</label>
         <input onChange={handleChange} id="status" value={newClaim.status} type="text" style={{display: editMode ? "block" : "none"}} /> */}
 
-        <button disabled={saving} className="registerclaim_button" type="submit">Save</button>
-        <p>{message}</p>
+
+        {/* {editMode === false && (<label htmlFor="status">Status</label> && <input onChange={handleChange} id="status" value={newClaim.status} type="text" />) */}
+       
+
+{/* 
+        {selectedTypeRadio === "auto" && (
+          <>
+          <label htmlFor="status">Status</label>
+          <input onChange={handleChange} id="status" value={newClaim.status} type="text" /> 
+          </>
+        )} */}
+
+      {/* <div aria-hidden={ selectedTypeRadio !== "auto" }>
+        <>
+        <label htmlFor="status">Status</label>
+        <input onChange={handleChange} id="status" value={newClaim.status} type="text" />
+        </>
+      </div> */}
+
+{/* selectedTypeRadio */}
+
+
   
       </form>
     </div> 
