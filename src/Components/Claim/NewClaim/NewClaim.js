@@ -6,13 +6,13 @@ import './NewClaim.css';
 
 const RegisterClaim = () => {
 
-  const emptyClaim = { type: "", status: "",  policyNumber: "", name: "", surname: "",
-                       claimStartDate : new Date().toISOString().slice(0,10), 
-                       claimReason: "", description: "",
-                       estAmount: "", claimPayOut: "", 
-                       address: "", 
-                       motorMake: "", motorModel: "", motorYom: "",
-                       petType: "", petBreed: ""}
+  const emptyClaim = {type: "", status: "",  policyNumber: "", name: "", surname: "",
+                      claimStartDate : new Date().toISOString().slice(0,10), 
+                      claimReason: "", description: "",
+                      estAmount: "", claimPayOut: "", 
+                      address: "", 
+                      motorMake: "", motorModel: "", motorYom: "",
+                      petType: "", petBreed: ""}
 
   // const emptyClaim = { type: "new",  claimStartDate : "", policyNumber: "", surname: "" };
 
@@ -57,7 +57,6 @@ const reduxDispatch = useDispatch();
       dispatch({field: "status", value: "new"})
       dispatch({field: "policyNumber", value: ""})
       dispatch({field: "name", value: ""})
-
       dispatch({field: "surname", value: ""})
       dispatch({field: "claimStartDate", value: ""})
       dispatch({field: "claimReason ", value: ""})
@@ -103,11 +102,53 @@ const reduxDispatch = useDispatch();
     if (editMode) {
       let data = {};
 
+      if (type !== claimToEdit.type) {
+        data = {...data, type : type};
+      };
+      if (status !== claimToEdit.status) {
+        data = {...data, status : status};
+      };
       if (policyNumber !== claimToEdit.policyNumber) {
         data = {...data, policyNumber : policyNumber};
       };
+      if (name !== claimToEdit.names) {
+        data = {...data, name : name};
+      };
       if (surname !== claimToEdit.surname) {
         data = {...data, surname : surname};
+      };
+      if (claimStartDate !== claimToEdit.claimStartDate) {
+        data = {...data, claimStartDate : claimStartDate};
+      };
+      if (claimReason !== claimReason.surname) {
+        data = {...data, claimReason : claimReason };
+      };
+      if (description !== description.surname) {
+        data = {...data, description : description };
+      };
+      if (estAmount !== claimToEdit.estAmount) {
+        data = {...data, estAmount : estAmount};
+      };
+      if (claimPayOut !== claimToEdit.claimPayOut) {
+        data = {...data, claimPayOut : claimPayOut};
+      };
+      if (address !== claimToEdit.address) {
+        data = {...data, address: address};
+      };
+      if (motorMake !== claimToEdit.motorMake) {
+        data = {...data,motorMake : motorMake};
+      };
+      if (motorModel !== claimToEdit.motorModel) {
+        data = {...data, motorModel : motorModel};
+      };
+      if (motorYom !== claimToEdit.motorYom) {
+        data = {...data, motorYom : motorYom};
+      };
+      if (petType !== claimToEdit.petType) {
+        data = {...data, petType : petType};
+      };
+      if (petBreed !== petBreed.surname) {
+        data = {...data, petBreed : petBreed};
       };
 
       response = updateClaim(params.claimId, data);
@@ -184,12 +225,11 @@ const reduxDispatch = useDispatch();
           </Fragment>
         }
 
-
     { editMode && 
       <Fragment>
           <label htmlFor="status">Claim Status</label>
             <select id="status" onChange={handleChange} value={newClaim.status} > 
-              <option value="new">New</option>
+              <option value="newwwww">New1</option>
               <option value="paid">Paid</option>
               <option value="paid">accepted payment due</option>
               <option value="paid">rejected</option>
@@ -199,7 +239,6 @@ const reduxDispatch = useDispatch();
             </select>
       </Fragment>
     }
-
 
         <label htmlFor="policyNumber">Policy number</label>
         <input onChange={handleChange} id="policyNumber" value={newClaim.policyNumber} type="text" />

@@ -1,6 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
 import { getAllClaims, getAllClaimsAxiosVersion, getClaim } from "../../../data/DataFunctions";
-
 import { useDispatch, useSelector } from "react-redux";
 import ClaimRow from "./ClaimRow";
 import { useParams } from "react-router";
@@ -54,7 +53,9 @@ const AssessClaims = (props) => {
     .filter(claim => claim.status === "new")
     .map(claim => <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} 
                   policyNumber={claim.policyNumber} surname={claim.surname}
-                  claimOpenDate={claim.claimOpenDate} status={claim.status}/> );
+                  claimStartDate={claim.claimStartDate} status={claim.status}/> );
+                  // claimOpenDate={claim.claimOpenDate} status={claim.status}/> );
+
 
   return <Fragment>
          

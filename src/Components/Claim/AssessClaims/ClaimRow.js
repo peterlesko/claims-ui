@@ -13,7 +13,7 @@ const ClaimRow = (props) => {
     <td>{props.type}</td>
     <td>{props.policyNumber}</td>
     <td>{props.surname}</td>
-    <td>{props.claimOpenDate}</td>
+    <td>{props.claimStartDate}</td>
     <td>{props.status}</td>
     <td>
       <button onClick={handleClick} type="button" className="viewButton">Assess</button>

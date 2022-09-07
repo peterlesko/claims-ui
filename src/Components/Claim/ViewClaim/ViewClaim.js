@@ -9,14 +9,12 @@ const ViewClaim = () => {
   // const emptyClaim = { claimId: "",  policyNumber: "", surname: "", status: "" }
 
   const emptyClaim = {  claimId: "", type: "", status: "",  policyNumber: "", name: "", surname: "",
-                       date : new Date().toISOString().slice(0,10), 
-                       claimReason: "", description: "",
-                       estAmount: "", claimPayOut: "", 
-                       address: "", 
-                       motorMake: "", motorModel: "", motorYom: "",
-                       petType: "", petBreed: ""}
-
-
+                        claimStartDate : new Date().toISOString().slice(0,10), 
+                        claimReason: "", description: "",
+                        estAmount: "", claimPayOut: "", 
+                        address: "", 
+                        motorMake: "", motorModel: "", motorYom: "",
+                        petType: "", petBreed: ""}
 
   // const emptyClaim = { claimId: "",  policyNumber: "", surname: "", status: "" }
   // const emptyClaim = { policyNumber: "", surname: "" }
@@ -28,11 +26,7 @@ const ViewClaim = () => {
   const params = useParams();
 
   useEffect( () => {
-    getClaim(params.claimId)
-
-
-
-    
+    getClaim(params.claimId)    
       .then(response => {
         if (response.status === 200) {
           setClaim(response.data);
