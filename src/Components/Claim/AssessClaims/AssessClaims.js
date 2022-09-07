@@ -57,24 +57,32 @@ const AssessClaims = (props) => {
                   claimOpenDate={claim.claimOpenDate} status={claim.status}/> );
 
   return <Fragment>
-    <table className="claims-table">
-      <thead>
-        <tr>
-          <th>Claim Id</th>
-          <th>Type</th>
-          <th>Policy #</th>
-          <th>Surname</th>
-          <th>Start Date</th>
-          <th>Status</th>
-          <th>Assess</th>
-        </tr>
-      </thead>
+         
+         
+    <div className="assess-claims">
+        
+      <h2>Asses claims</h2>
 
-      <tbody>    
-        {displayClaims}
-      </tbody> 
-    </table>
-    {claims.length === 0 && <p>Please wait... loading data</p>}
+      <table className="claims-table">
+        <thead>
+          <tr>
+            <th>Claim Id</th>
+            <th>Type</th>
+            <th>Policy #</th>
+            <th>Surname</th>
+            <th>Start Date</th>
+            <th>Status</th>
+            <th>Assess</th>
+          </tr>
+        </thead>
+
+        <tbody>    
+          {displayClaims}
+        </tbody> 
+      </table>
+      {claims.length === 0 && <p>Please wait... loading data</p>}
+    </div>
+
   </Fragment>
 }
 

@@ -6,7 +6,6 @@ import RegisterClaim from './Components/Claim/NewClaim/NewClaim';
 import Search from './Components/Claim/Search/Search';
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ExistingClaim from './Components/Claim/ExistingClaim/ExistingClaim';
 import ViewClaims from './Components/Claim/AssessClaims/AssessClaims';
 import FindAClaim from './Components/Claim/Claims/FindAClaim';
 import NewClaim from './Components/Claim/NewClaim/NewClaim';
@@ -27,14 +26,15 @@ function App() {
                   <Route path="/newClaim" element={<NewClaim/>} />
 
                   <Route path="/edit/:claimId" element={<NewClaim/>} />
-                  
-                  <Route path="/assessClaim/:claimId" element={<AssessClaim/>} />
+                  {/* this is working 
+                  <Route path="/assessClaim/:claimId" element={<AssessClaim/>} /> */}
+                  <Route path="/assessClaim/:claimId" element={<NewClaim/>} />
 
                   <Route path="/findAClaim" element={<FindAClaim/>} />
                   <Route path="/findAClaim/:surname" element={<FindAClaim />} />
 
                   <Route path="/view/:claimId" element={<ViewClaim/>} />
-                  <Route path="/existingClaim" element={<ExistingClaim/>} />
+
 
                   <Route path="/assessClaims" element={<AssessClaims/>} />
 

@@ -1,15 +1,20 @@
 import { Fragment, useEffect, useReducer, useState, useSyncExternalStore } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
-import { addNewClaim, updateClaim } from '../../../data/DataFunctions';
+import { addNewClaim, getClaim, updateClaim } from '../../../data/DataFunctions';
 import './NewClaim.css';
 
 const RegisterClaim = () => {
 
-  // const emptyClaim = { type: "", date : new Date().toISOString().slice(0,10), 
-  //                     policyNumber: "", surname: ""};
+  const emptyClaim = { type: "", status: "",  policyNumber: "", name: "", surname: "",
+                       claimStartDate : new Date().toISOString().slice(0,10), 
+                       claimReason: "", description: "",
+                       estAmount: "", claimPayOut: "", 
+                       address: "", 
+                       motorMake: "", motorModel: "", motorYom: "",
+                       petType: "", petBreed: ""}
 
-  const emptyClaim = { type: "new",  claimStartDate : "", policyNumber: "", surname: "" };
+  // const emptyClaim = { type: "new",  claimStartDate : "", policyNumber: "", surname: "" };
 
   const newClaimReducer = (existingState, data) => {
     return {...existingState, [data.field] : data.value}
@@ -24,11 +29,50 @@ const RegisterClaim = () => {
     setPageChanged(params.claimId)}, [params.claimId]);
 
   const editMode = claimToEditClaimId != null;
-  const claimToEdit = useSelector(state => state.claimToEdit);
+  // const claimToEdit = useSelector(state => state.claimToEdit);
+
+  const claimToEdit1 = useSelector(state => state.claimToEdit);
+  const [claimToEdit, setClaimToEdit] = useState(editMode ? claimToEdit1 : emptyClaim);
+
+  console.log(claimToEdit);
+
+const reduxDispatch = useDispatch();
+
+  if(claimToEdit.status == null && editMode) {
+    getClaim(params.claimId)
+    
+    .then(response => { reduxDispatch({type : "set-claim-to-edit", value : response.data} )
+    setClaimToEdit(response.data);
+  })
+
+  }
 
   const [newClaim, dispatch] = useReducer(newClaimReducer, 
-                                          editMode ? claimToEdit : emptyClaim );
-                                            
+                                          claimToEdit );
+
+  useEffect(() => {
+    if(!editMode) { 
+      dispatch({field: "claimId", value: ""})
+      dispatch({field: "type", value: ""})
+      dispatch({field: "status", value: "new"})
+      dispatch({field: "policyNumber", value: ""})
+      dispatch({field: "name", value: ""})
+
+      dispatch({field: "surname", value: ""})
+      dispatch({field: "claimStartDate", value: ""})
+      dispatch({field: "claimReason ", value: ""})
+      dispatch({field: "description  ", value: ""})
+      dispatch({field: "estAmount", value: ""})
+      dispatch({field: "claimPayOut", value: ""})
+      dispatch({field: "address", value: ""})
+      dispatch({field: "motorMake", value: ""})
+      dispatch({field: "motorModel", value: ""})
+      dispatch({field: "motorYom", value: ""})
+      dispatch({field: "petType", value: ""})
+      dispatch({field: "petBreed", value: ""})
+   }
+  },[editMode] )
+
   const [selectedTypeRadio, setSelectedTypeRadio] = useState("");
                                           
   const handleChange = (event) => {
@@ -38,7 +82,9 @@ const RegisterClaim = () => {
     dispatch(dataToChange); 
   }
 
-  const {claimId, policyNumber, surname, type, claimStartDate} = newClaim;
+  // const {claimId, status, policyNumber, surname, type, claimStartDate} = newClaim;
+
+  const {type, status, policyNumber, name, surname, claimStartDate, claimReason, description, estAmount, claimPayOut, address, motorMake, motorModel, motorYom, petType, petBreed} = newClaim;
 
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
@@ -99,22 +145,61 @@ const RegisterClaim = () => {
         
         <h2>{editMode ? "Edit" : "Register new"} claim</h2>
 
-        <div  className="radio-container">        
-          <label>Claim type</label>
+        <div  className="radio-container">   
+             
 
-          <input onChange={handleChange} checked={type === "property"}
-          id="type" value="property" name="type" type="radio"/>
-          <label className="radio-label" htmlFor="property">Property</label>
+        { !editMode && (
+          <> 
+            <label>Claim type</label>
 
-          <input onChange={handleChange} checked={type === "motor"}
-          id="type" value="motor" name="type" type="radio" />          
-          <label className="radio-label" htmlFor="motor">Motor</label>
+            <input onChange={handleChange} checked={type === "property"}
+            id="type" value="property" name="type" type="radio"/>
+            <label className="radio-label" htmlFor="property">Property</label>
 
-          <input onChange={handleChange}  checked={type === "pet"}
-          id="type" value="pet" name="type" type="radio"/>
-          <label className="radio-label" htmlFor="pet">Pet</label>
+            <input onChange={handleChange} checked={type === "motor"}
+            id="type" value="motor" name="type" type="radio" />          
+            <label className="radio-label" htmlFor="motor">Motor</label>
 
+            <input onChange={handleChange}  checked={type === "pet"}
+            id="type" value="pet" name="type" type="radio"/>
+            <label className="radio-label" htmlFor="pet">Pet</label>
+
+          </>
+        )}
         </div>
+
+        {/* for edit mode only */}
+        { editMode && (
+          <>
+          <label htmlFor="type">Claim Type</label>
+          <input onChange={handleChange} id="type" value={newClaim.type} type="text" /> 
+          </>
+        )}
+
+        {/* change later for edit mode only */}
+       { editMode && 
+          <Fragment>
+           <label htmlFor="status">Claim Status</label>
+           <input onChange={handleChange} id="status" value={newClaim.status} type="text" /> 
+          </Fragment>
+        }
+
+
+    { editMode && 
+      <Fragment>
+          <label htmlFor="status">Claim Status</label>
+            <select id="status" onChange={handleChange} value={newClaim.status} > 
+              <option value="new">New</option>
+              <option value="paid">Paid</option>
+              <option value="paid">accepted payment due</option>
+              <option value="paid">rejected</option>
+              <option value="paid">paid</option>
+              <option value="paid">escalate</option>
+              <option value="paid">reject</option>            
+            </select>
+      </Fragment>
+    }
+
 
         <label htmlFor="policyNumber">Policy number</label>
         <input onChange={handleChange} id="policyNumber" value={newClaim.policyNumber} type="text" />
@@ -125,45 +210,54 @@ const RegisterClaim = () => {
         <label htmlFor="surname">Surname</label>
         <input onChange={handleChange} id="surname" value={newClaim.surname} type="text" />
 
+
         <label htmlFor="claimStartDate">Claim Start Date</label>
         <input onChange={handleChange} id="claimStartDate" value={newClaim.claimStartDate} type="date" /> 
 
-        <label htmlFor="amount">Amount</label>
-        <input onChange={handleChange} id="amount" value={newClaim.amount} type="text" /> 
 
         <label htmlFor="claimReason">Claim Reason</label>
         <input onChange={handleChange} id="claimReason" value={newClaim.claimReason} type="text" /> 
 
-        <label htmlFor="description">Description</label>
+        <label htmlFor="description">Claim Desc</label>
         <input onChange={handleChange} id="description" value={newClaim.description} type="text" /> 
 
-        {selectedTypeRadio === "property" && (
+        <label htmlFor="estAmount">Est Amount</label>
+        <input onChange={handleChange} id="estAmount" value={newClaim.estAmount} type="text" /> 
+
+        { editMode && (
           <>
-          <label htmlFor="address">Address</label>
-          <input onChange={handleChange} id="address" value={newClaim.address} type="text" /> 
+            <label htmlFor="claimPayOut">Claim Pay Out</label>
+            <input onChange={handleChange} id="claimPayOut" value={newClaim.claimPayOut} type="text" />   
           </>
         )}
 
-        {selectedTypeRadio === "motor" && (
+        {(selectedTypeRadio === "property" || claimToEdit.type === "property" ) && (
           <>
-          <label htmlFor="motorMake">Make</label>
-          <input onChange={handleChange} id="motorMake" value={newClaim.motorMake} type="text" /> 
-
-          <label htmlFor="motorModel">Model</label>
-          <input onChange={handleChange} id="motorModel" value={newClaim.motorModel} type="text" /> 
-
-          <label htmlFor="motorYom">YOM</label>
-          <input onChange={handleChange} id="motorYom" value={newClaim.motorYom} type="text" /> 
+            <label htmlFor="address">Address</label>
+            <input onChange={handleChange} id="address" value={newClaim.address} type="text" /> 
           </>
         )}
 
-        {selectedTypeRadio === "pet" && (
+        {(selectedTypeRadio === "motor" || claimToEdit.type === "motor") && (
           <>
-          <label htmlFor="petType">Pet Type</label>
-          <input onChange={handleChange} id="petType" value={newClaim.petType} type="text" /> 
+            <label htmlFor="motorMake">Make</label>
+            <input onChange={handleChange} id="motorMake" value={newClaim.motorMake} type="text" /> 
 
-          <label htmlFor="petBreed">Pet Breed</label>
-          <input onChange={handleChange} id="petBreed" value={newClaim.petBreed} type="text" /> 
+            <label htmlFor="motorModel">Model</label>
+            <input onChange={handleChange} id="motorModel" value={newClaim.motorModel} type="text" /> 
+
+            <label htmlFor="motorYom">YOM</label>
+            <input onChange={handleChange} id="motorYom" value={newClaim.motorYom} type="text" /> 
+          </>
+        )}
+
+        {(selectedTypeRadio === "pet" || claimToEdit.type === "pet"  ) && (
+          <>
+            <label htmlFor="petType">Pet Type</label>
+            <input onChange={handleChange} id="petType" value={newClaim.petType} type="text" /> 
+
+            <label htmlFor="petBreed">Pet Breed</label>
+            <input onChange={handleChange} id="petBreed" value={newClaim.petBreed} type="text" /> 
           </>
         )}
 
