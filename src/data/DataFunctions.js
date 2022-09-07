@@ -69,6 +69,8 @@ export const getClaim = (claimId) => {
 }
 
 export const updateClaim = ( claimId, data) => {
+
+console.log(data)
   return axios({
     url: "http://localhost:8080/api/claim/" + claimId,
     method: "PUT",

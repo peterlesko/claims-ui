@@ -137,19 +137,39 @@ const ViewClaim = () => {
             </tr>
 
             <tr>
-               <th>Model</th>
-              <td>{claim.motorModel}</td>
+               <th>YOM</th>
+              <td>{claim.motorYom}</td>
             </tr>
 
+            <tr>
+               <th>Pet Type</th>
+              <td>{claim.petType}</td>
+            </tr>
 
+            <tr>
+               <th>Pet Breed</th>
+              <td>{claim.petBreed}</td>
+            </tr>
 
           </tbody>
         </table>
         {/* {useReducer.role === "MANAGER" & <button>edit</button> }  //for roles */} 
         {/* <button>edit</button>  */}
         {/* <button onClick={edit} type="submit" className="Search">edit2</button> */}
-        <button onClick={edit}>edit</button>
-        <button onClick={edit}>Asses claim</button>
+
+        {/* <button onClick={edit}>edit</button> */}
+
+        {/* {(claim.status === "rejected" || claim.status === "accepted & paid" ) && (
+          <Fragment>
+            <button onClick={edit}>Asses claim</button>
+            {/* <button onClick={edit}>edit</button> */}
+          {/* </Fragment>
+        )} */}
+
+
+        <button disabled={claim.status === "rejected" || claim.status === "accepted & paid"} onClick={edit}>Asses claim</button>
+
+
         {/* <button onClick={edit}>Asses claim</button> */}
 
 

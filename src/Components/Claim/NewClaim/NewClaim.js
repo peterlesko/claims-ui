@@ -31,24 +31,36 @@ const RegisterClaim = () => {
   const editMode = claimToEditClaimId != null;
   // const claimToEdit = useSelector(state => state.claimToEdit);
 
+  // code to fix issues with refeshing the page, and keeping the data in the page 
   const claimToEdit1 = useSelector(state => state.claimToEdit);
   const [claimToEdit, setClaimToEdit] = useState(editMode ? claimToEdit1 : emptyClaim);
 
   console.log(claimToEdit);
 
-const reduxDispatch = useDispatch();
+// const reduxDispatch = useDispatch();
 
-  if(claimToEdit.status == null && editMode) {
-    getClaim(params.claimId)
+//   if(claimToEdit.status == null && editMode) {
+//     getClaim(params.claimId)
     
-    .then(response => { reduxDispatch({type : "set-claim-to-edit", value : response.data} )
-    setClaimToEdit(response.data);
+//     .then(response => { reduxDispatch({type : "set-claim-to-edit", value : response.data} )
+//     setClaimToEdit(response.data);
+//   })
+
+//   }
+// code to fix issues with refeshing the page, and keeping the data in the page 
+const reduxDispatch = useDispatch();
+  if(claimToEdit1.claimId == "" && editMode) {
+    getClaim(params.claimId)   
+    .then(response => {
+      reduxDispatch({type : "set-claim-to-edit", value : response.data} )
+      for (const key in response.data) {
+        dispatch({field: key , value : response.data[key] != null ? response.data[key] : ""})  
+      }
   })
 
   }
 
-  const [newClaim, dispatch] = useReducer(newClaimReducer, 
-                                          claimToEdit );
+  const [newClaim, dispatch] = useReducer(newClaimReducer, claimToEdit );
 
   useEffect(() => {
     if(!editMode) { 
@@ -83,7 +95,7 @@ const reduxDispatch = useDispatch();
 
   // const {claimId, status, policyNumber, surname, type, claimStartDate} = newClaim;
 
-  const {type, status, policyNumber, name, surname, claimStartDate, claimReason, description, estAmount, claimPayOut, address, motorMake, motorModel, motorYom, petType, petBreed} = newClaim;
+  const {claimId,type, status, policyNumber, name, surname, claimStartDate, claimReason, description, estAmount, claimPayOut, address, motorMake, motorModel, motorYom, petType, petBreed} = newClaim;
 
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
@@ -147,7 +159,7 @@ const reduxDispatch = useDispatch();
       if (petType !== claimToEdit.petType) {
         data = {...data, petType : petType};
       };
-      if (petBreed !== petBreed.surname) {
+      if (petBreed !==  claimToEdit.petBreed) {
         data = {...data, petBreed : petBreed};
       };
 
@@ -160,11 +172,17 @@ const reduxDispatch = useDispatch();
       console.log("<<<<<<<<<<<<");
     }
 
+  //fix the navigating to edit page after submiiting new claim and printing claim ID on the screen, not working yet,
     response.then(result => { 
       if (result.status === 200) {
         // navigate("/find/" + result.data.claimId);
-        navigate("/findAClaim/" + result.data.surname);
+        // navigate("/findAClaim/" + result.data.surname);
         // navigate("/newClaim/");
+        dispatch({type : "set-claim-to-edit", value : result.data });
+        setMessage("");
+        setSaving(false); 
+        navigate("/edit/" + result.data.claimId);
+        console.log(result.data);
       }
       else {
         setMessage("something went wrong ", result.statusText)
@@ -184,7 +202,7 @@ const reduxDispatch = useDispatch();
       <form onSubmit={submitForm}>
         {/* <h2>Register new claim</h2> */}
         
-        <h2>{editMode ? "Edit" : "Register new"} claim</h2>
+        <h2>{editMode ? "Edit" : "Register new"} claim  {editMode ? claimId : ""}</h2>
 
         <div  className="radio-container">   
              
@@ -229,13 +247,13 @@ const reduxDispatch = useDispatch();
       <Fragment>
           <label htmlFor="status">Claim Status</label>
             <select id="status" onChange={handleChange} value={newClaim.status} > 
-              <option value="newwwww">New1</option>
+              <option value="new">New1</option>
               <option value="paid">Paid</option>
               <option value="paid">accepted payment due</option>
-              <option value="paid">rejected</option>
+              <option value="paid">accepted & paid</option>
+              <option value="rejected">rejected</option>
               <option value="paid">paid</option>
-              <option value="paid">escalate</option>
-              <option value="paid">reject</option>            
+              <option value="paid">escalated</option>          
             </select>
       </Fragment>
     }

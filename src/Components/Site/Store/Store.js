@@ -2,9 +2,24 @@
 import {configureStore } from '@reduxjs/toolkit';
 import { act } from 'react-dom/test-utils';  
 
-const initialState = {surname : [], lastFetch : null, userName : "Matt", 
+// const initialState = {surname : [], lastFetch : null, userName : "Matt", 
+//                       claims : [],
+//                       claimToEdit : {}};
+
+
+const initialState = {surname : [], lastFetch : null, userName : "Matt",
                       claims : [],
-                      claimToEdit : {}};
+                      claimToEdit : {
+                        claimId: "",
+                        type: "", status: "",  policyNumber: "",
+                      name: "", surname: "",
+                      claimStartDate : new Date().toISOString().slice(0,10),
+                      claimReason: "", description: "",
+                      estAmount: "", claimPayOut: "",
+                      address: "",
+                      motorMake: "", motorModel: "", motorYom: "",
+                      petType: "", petBreed: ""}};
+
 
 const claimsReducer = (state = initialState, action) => {
 
