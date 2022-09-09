@@ -1,11 +1,5 @@
-// import { createStore, configureStore } from "redux";
 import {configureStore } from '@reduxjs/toolkit';
 import { act } from 'react-dom/test-utils';  
-
-// const initialState = {surname : [], lastFetch : null, userName : "Matt", 
-//                       claims : [],
-//                       claimToEdit : {}};
-
 
 const initialState = {surname : [], lastFetch : null, userName : "Matt",
                       claims : [],
@@ -44,7 +38,6 @@ const claimsReducer = (state = initialState, action) => {
   }
 }; 
 
-// const store = createStore(claimsReducer);
 const claimsStore = configureStore({reducer : claimsReducer});
  
 export default claimsStore;       

@@ -14,8 +14,6 @@ const RegisterClaim = () => {
                       motorMake: "", motorModel: "", motorYom: "",
                       petType: "", petBreed: ""}
 
-  // const emptyClaim = { type: "new",  claimStartDate : "", policyNumber: "", surname: "" };
-
   const newClaimReducer = (existingState, data) => {
     return {...existingState, [data.field] : data.value}
   }
@@ -29,25 +27,12 @@ const RegisterClaim = () => {
     setPageChanged(params.claimId)}, [params.claimId]);
 
   const editMode = claimToEditClaimId != null;
-  // const claimToEdit = useSelector(state => state.claimToEdit);
-
-  // code to fix issues with refeshing the page, and keeping the data in the page 
+ 
   const claimToEdit1 = useSelector(state => state.claimToEdit);
   const [claimToEdit, setClaimToEdit] = useState(editMode ? claimToEdit1 : emptyClaim);
 
   console.log(claimToEdit);
 
-// const reduxDispatch = useDispatch();
-
-//   if(claimToEdit.status == null && editMode) {
-//     getClaim(params.claimId)
-    
-//     .then(response => { reduxDispatch({type : "set-claim-to-edit", value : response.data} )
-//     setClaimToEdit(response.data);
-//   })
-
-//   }
-// code to fix issues with refeshing the page, and keeping the data in the page 
 const reduxDispatch = useDispatch();
   if(claimToEdit1.claimId == "" && editMode) {
     getClaim(params.claimId)   
@@ -85,15 +70,6 @@ const reduxDispatch = useDispatch();
   },[editMode] )
 
   const [selectedTypeRadio, setSelectedTypeRadio] = useState("");
-        
-  // //handle change before change
-  // const handleChange = (event) => {
-  //   setSelectedTypeRadio(event.target.value);
-  //   console.log(">>>>>>>>>>>>>>>>>> selectedTypeRadio:  "  + selectedTypeRadio);
-  //   const dataToChange = { field: event.target.id, value: event.target.value };
-  //   dispatch(dataToChange); 
-  // }
-
 
   const handleChange = (event) => {
     if (event.target.id === "type") {
@@ -104,10 +80,8 @@ const reduxDispatch = useDispatch();
     dispatch(dataToChange); 
   }
 
-
-  // const {claimId, status, policyNumber, surname, type, claimStartDate} = newClaim;
-
-  const {claimId,type, status, policyNumber, name, surname, claimStartDate, claimReason, description, estAmount, claimPayOut, address, motorMake, motorModel, motorYom, petType, petBreed} = newClaim;
+  const {claimId,type, status, policyNumber, name, surname, claimStartDate, claimReason, description, 
+        estAmount, claimPayOut, address, motorMake, motorModel, motorYom, petType, petBreed} = newClaim;
 
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
@@ -184,12 +158,8 @@ const reduxDispatch = useDispatch();
       console.log("<<<<<<<<<<<<");
     }
 
-  //fix the navigating to edit page after submiiting new claim and printing claim ID on the screen, not working yet,
     response.then(result => { 
       if (result.status === 200) {
-        // navigate("/find/" + result.data.claimId);
-        // navigate("/findAClaim/" + result.data.surname);
-        // navigate("/newClaim/");
         dispatch({type : "set-claim-to-edit", value : result.data });
         setMessage("");
         setSaving(false); 
@@ -212,7 +182,6 @@ const reduxDispatch = useDispatch();
     <div className="newClaim-form">
 
       <form onSubmit={submitForm}>
-        {/* <h2>Register new claim</h2> */}
         
         <h2>{editMode ? "Edit" : "Register new"} claim ID  {editMode ? claimId : ""}</h2>
 
@@ -239,7 +208,6 @@ const reduxDispatch = useDispatch();
 
         </div>
 
-        {/* for edit mode only */}
         { editMode && (
           <>
           <label htmlFor="type">Claim Type</label>

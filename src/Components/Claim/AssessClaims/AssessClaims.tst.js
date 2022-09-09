@@ -15,6 +15,5 @@ jest.mock("../../../data/DataFunctions" , () => {
 test ("Claims with other then new status are removed from list", async () => {
   render (<BrowserRouter><AssessClaims /></BrowserRouter> )
   const table = await createElement.findByRole("option", {}, 5000);
-  // expect(table).toBeInTheDocument();
   expect(table).toHaveLength(2);
 }  )

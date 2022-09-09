@@ -18,6 +18,7 @@ const PageHeader = (props) => {
       </div>
 
       <Menu setSelectedPage={props.setSelectedPage} />
+      
       {/* <p>Current user : {username} <button onClick={changeName} >change user</button></p> */}
     </div>
   )

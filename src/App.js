@@ -26,21 +26,14 @@ function App() {
                   <Route path="/newClaim" element={<NewClaim/>} />
 
                   <Route path="/edit/:claimId" element={<NewClaim/>} />
-                  {/* this is working 
-                  <Route path="/assessClaim/:claimId" element={<AssessClaim/>} /> */}
-                  {/* <Route path="/assessClaim/:claimId" element={<NewClaim/>} /> */}
 
                   <Route path="/findAClaim" element={<FindAClaim/>} />
                   <Route path="/findAClaim/:surname" element={<FindAClaim />} />
+                  <Route path="/find/:claimId" element={<FindAClaim/>} />
 
                   <Route path="/view/:claimId" element={<ViewClaim/>} />
 
-
                   <Route path="/assessClaims" element={<AssessClaims />} />
-
-                  {/* <Route path="/find" element={<FindAClaim/>} /> */}
-                  <Route path="/find/:claimId" element={<FindAClaim/>} />
-
 
                   <Route path="/" element= {<h1 className="home-page" >Welcome to the application</h1>} />
                   {/* <Route path="*" element= {<PageNotFound />} /> */}
@@ -51,21 +44,12 @@ function App() {
         </BrowserRouter>
     </Provider>
   );
-
-  // const [selectedPage, setSelectedPage] = useState("newClaim");
-
-  // return (
-  //   <div className="App">
-
-  //     <PageHeader setSelectedPage={setSelectedPage} />
-
-  //     {selectedPage === "newClaim" && <RegisterClaim />}
-  //     {selectedPage === "search" && <Search />}
-
-  //     <Footer />
-
-  //   </div>
-  // );
 }
 
 export default App;
+
+
+
+                  {/* this is working 
+                  <Route path="/assessClaim/:claimId" element={<AssessClaim/>} /> */}
+                  {/* <Route path="/assessClaim/:claimId" element={<NewClaim/>} /> */}

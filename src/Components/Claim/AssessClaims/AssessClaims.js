@@ -54,8 +54,6 @@ const AssessClaims = (props) => {
     .map(claim => <ClaimRow key={claim.claimId} claimId={claim.claimId} type={claim.type} 
                   policyNumber={claim.policyNumber} surname={claim.surname}
                   claimStartDate={claim.claimStartDate} status={claim.status}/> );
-                  // claimOpenDate={claim.claimOpenDate} status={claim.status}/> );
-
 
   return <Fragment>
          

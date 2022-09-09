@@ -1,8 +1,6 @@
 .view-claims-table button {
   background-color: rgb(129, 193, 129);
-  /* background-color: rgb(193, 29, 119); */
   font-weight: bold;
-  /* border-bottom: 50px;; */
   margin-top: 2px;
   margin-bottom: 2px;
 }
@@ -15,7 +13,7 @@
   border: 1px solid #000;
   border-collapse: collapse;
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
 }
 
 .view-claims-table td, th {
@@ -28,37 +26,18 @@
   padding-bottom: 8px;
 }
 
-/* .view-claims-table h2 {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
 .view-claims-header h2 {
   margin-top: 35px;
   margin-bottom: 30px;
   text-align:center;
-  /* display: block; */
-/* 
-  margin-left: auto;
-  margin-right: auto; */
 }
 
-
-/* .search-table button {
-  background-color: rgb(129, 193, 129);
-}
-
-.search-table {
-  background-color: #fff;
-  width: 850px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid #000;
-  border-collapse: collapse;
-  text-align: center;
-}
-
-.search-table td, th {
-  border: 1px solid #000;
-} */
+.viewClaimButton {
+    background-color: rgb(167, 211, 167);
+    font-weight: bold;
+    margin-top: 0px;
+    margin-left:600px;
+    margin-bottom: 30px;
+    height: 35px;
+    font-size: 15px;
+  }

@@ -6,8 +6,6 @@ import './ViewClaim.css';
 
 const ViewClaim = () => {
 
-  // const emptyClaim = { claimId: "",  policyNumber: "", surname: "", status: "" }
-
   const emptyClaim = {  claimId: "", type: "", status: "",  policyNumber: "", name: "", surname: "",
                         claimStartDate : new Date().toISOString().slice(0,10), 
                         claimReason: "", description: "",
@@ -15,9 +13,6 @@ const ViewClaim = () => {
                         address: "", 
                         motorMake: "", motorModel: "", motorYom: "",
                         petType: "", petBreed: ""}
-
-  // const emptyClaim = { claimId: "",  policyNumber: "", surname: "", status: "" }
-  // const emptyClaim = { policyNumber: "", surname: "" }
 
   const [claim, setClaim] = useState(emptyClaim);
  
@@ -45,23 +40,6 @@ const ViewClaim = () => {
     dispatch({type : "set-claim-to-edit", value : claim });
     navigate("/edit/" + params.claimId);
   }
-
-
-  // const assessClaim = () => {
-  //   dispatch({type : "set-claim-to-edit", value : claim });
-  //   navigate("/assessClaim/" + params.claimId);
-  // }
-
-  // this is working 
-  // const assessClaim = () => {
-  //   dispatch({type : "set-claim-to-edit", value : claim });
-  //   navigate("/assessClaim/" + params.claimId);
-  // }
-
-//   <tr>
-//   <th></th>
-//   <td>{claim.}</td>
-// </tr>
 
   return (
     <Fragment>
@@ -111,7 +89,7 @@ const ViewClaim = () => {
 
             <tr>
               <th>Description </th>
-             <td>{claim.description}</td>
+              <td>{claim.description}</td>
             </tr>
 
             <tr>
@@ -169,9 +147,9 @@ const ViewClaim = () => {
           </tbody>
         </table>
 
-        <button disabled={claim.status === "rejected" || claim.status === "acceptedPaid"} onClick={edit}>Assess-edit</button>
+      <button disabled={claim.status === "rejected" || claim.status === "acceptedPaid"} onClick={edit} type="button" className="viewClaimButton">Assess-edit</button>
 
-      </Fragment>
+    </Fragment>
   );
 }
 

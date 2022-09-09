@@ -1,10 +1,3 @@
-
-/* .formHeader {
-  text-align: center;
-  text-decoration: strong;
-  margin-bottom: 200px;
-} */
-
 .newClaim-form {
   width: 400px;
   margin-left: auto;
@@ -26,18 +19,13 @@
 .newClaim-form input {
   margin-bottom: 10px;
   display: block;
-  /*clear: both; /*stops floating after input*/
+
 }
 
 .newClaim-form button {
-/* .search-claims button { */
   background-color: rgb(193, 129, 159);
   margin-left: 250px;
   font-weight: bold;
-  /* margin-right: 4px; */
-    /* float: right; */
-
-    /* margin: 10px; */
 }
 
 @media only screen and (max-width: 768px) {
@@ -47,7 +35,6 @@
   }
 }
 
-/* .radio-container input  { */
   form label.radio-label {
   display: inline-block;
   float: none;

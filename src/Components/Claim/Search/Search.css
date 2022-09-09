@@ -1,32 +1,21 @@
-/* 
-.search.claims-table  {
-  background-color: rgb(210, 230, 200);
-  margin-top: 10px;
-  margin-bottom: 40px;
-} */
-
 .search-claims {
   width: 350px;
-  /* text-align: center; */
   margin-left: auto;
   margin-right: auto;
   background-color: #fff;
-  /* background-color: #1e90ff; */
   border: 1px #000 solid;
   padding: 10px;
-  /* margin-top: 40px; */
   margin-top: 20px;
   margin-bottom: 40px;
 }
 
 h2.search-heading {
   text-align: center;
-  /* text-decoration: strong; */
 }
 
 .search-claims label {
   width: 120px;
-  display: block; /*label is inline object, must be made a block */
+  display: block;    /*label is inline object, must be made a block */
   float: left;
   margin-right: 10px;
 }
@@ -34,37 +23,13 @@ h2.search-heading {
 .search-claims input {
   margin-bottom: 10px;
   display: block;
-  /*clear: both; /*stops floating after input*/
 }
 
 .search-claims button {
-/* .search-claims button { */
   background-color: rgb(193, 129, 159);
   margin-left: 240px;
   font-weight: bold;
-  /* margin-right: 4px; */
-    /* float: right; */
-
-    /* margin: 10px; */
 }
-
-/* .search-table button {
-  background-color: rgb(129, 193, 129);
-}
-
-.search-table {
-  background-color: #fff;
-  width: 850px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid #000;
-  border-collapse: collapse;
-  text-align: center;
-}
-
-.search-table td, th {
-  border: 1px solid #000;
-} */
 
 @media only screen and (max-width: 768px) {
   .search-claims{
@@ -72,10 +37,3 @@ h2.search-heading {
     background: #d2daf3;
   }
 }
-
-/* @media only screen and (max-width: 768px) {
-  .search-table{
-    width: 70%;
-    background: #d2daf3;
-  }
-} */
