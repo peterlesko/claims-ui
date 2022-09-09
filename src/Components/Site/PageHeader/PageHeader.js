@@ -14,7 +14,7 @@ const PageHeader = (props) => {
     <div className="pageHeader">
 
       <div className="pageHeaderLogo">
-        <h2>Insurance Company</h2>
+        <h2>Speedy Claims</h2>
       </div>
 
       <Menu setSelectedPage={props.setSelectedPage} />

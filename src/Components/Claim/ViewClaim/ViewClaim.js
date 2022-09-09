@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useReducer, useState } from "react";
+import React, { Fragment, useEffect, useReducer, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { getClaim } from "../../../data/DataFunctions";
@@ -63,22 +63,25 @@ const ViewClaim = () => {
 //   <td>{claim.}</td>
 // </tr>
 
-
-
   return (
-      <Fragment>
-        <h2>View claim ID: {claim.claimId}</h2>
+    <Fragment>
+
+      <div class="view-claims-header">
+        <h2>Details claim Id {claim.claimId}</h2>
+      </div>
+
         <table className="view-claims-table">
+
           <tbody>
             <tr>
               <th>Claim ID</th>
               <td>{claim.claimId}</td>
             </tr>
 
-            <tr>
-              <th>Claim type</th>
-              <td>{claim.type}</td>
-            </tr>
+              <tr>
+                <th>Claim type</th>
+                <td>{claim.type}</td>
+              </tr>
 
             <tr>
               <th>Status</th>
@@ -121,57 +124,52 @@ const ViewClaim = () => {
               <td>{claim.claimPayOut}</td>
             </tr>
 
-            <tr>
-               <th>Address</th>
-              <td>{claim.address}</td>
-            </tr>
+            { claim.type==="property" && 
+              <Fragment>
+                <tr>
+                  <th>Address</th>
+                  <td>{claim.address}</td>
+                </tr>
+              </Fragment>  
+            }
 
-            <tr>
-               <th>Make</th>
-              <td>{claim.motorMake}</td>
-            </tr>
+            { claim.type==="motor" && 
+              <Fragment>
+                <tr>
+                  <th>Make</th>
+                  <td>{claim.motorMake}</td>
+                </tr>
 
-            <tr>
-               <th>Model</th>
-              <td>{claim.motorModel}</td>
-            </tr>
+                <tr>
+                  <th>Model</th>
+                  <td>{claim.motorModel}</td>
+                </tr>
 
-            <tr>
-               <th>YOM</th>
-              <td>{claim.motorYom}</td>
-            </tr>
+                <tr>
+                  <th>YOM</th>
+                  <td>{claim.motorYom}</td>
+                </tr>
+              </Fragment>  
+            }
 
-            <tr>
-               <th>Pet Type</th>
-              <td>{claim.petType}</td>
-            </tr>
+            { claim.type==="pet" && 
+              <Fragment>
+                <tr>
+                  <th>Pet Type</th>
+                  <td>{claim.petType}</td>
+                </tr>
 
-            <tr>
-               <th>Pet Breed</th>
-              <td>{claim.petBreed}</td>
-            </tr>
+                <tr>
+                  <th>Pet Breed</th>
+                  <td>{claim.petBreed}</td>
+                </tr>
+              </Fragment>  
+            }
 
           </tbody>
         </table>
-        {/* {useReducer.role === "MANAGER" & <button>edit</button> }  //for roles */} 
-        {/* <button>edit</button>  */}
-        {/* <button onClick={edit} type="submit" className="Search">edit2</button> */}
 
-        {/* <button onClick={edit}>edit</button> */}
-
-        {/* {(claim.status === "rejected" || claim.status === "accepted & paid" ) && (
-          <Fragment>
-            <button onClick={edit}>Asses claim</button>
-            {/* <button onClick={edit}>edit</button> */}
-          {/* </Fragment>
-        )} */}
-
-
-        <button disabled={claim.status === "rejected" || claim.status === "accepted & paid"} onClick={edit}>Asses claim</button>
-
-
-        {/* <button onClick={edit}>Asses claim</button> */}
-
+        <button disabled={claim.status === "rejected" || claim.status === "acceptedPaid"} onClick={edit}>Assess-edit</button>
 
       </Fragment>
   );

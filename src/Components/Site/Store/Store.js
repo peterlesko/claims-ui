@@ -10,8 +10,8 @@ import { act } from 'react-dom/test-utils';
 const initialState = {surname : [], lastFetch : null, userName : "Matt",
                       claims : [],
                       claimToEdit : {
-                        claimId: "",
-                        type: "", status: "",  policyNumber: "",
+                      claimId: "",
+                      type: "", status: "",  policyNumber: "",
                       name: "", surname: "",
                       claimStartDate : new Date().toISOString().slice(0,10),
                       claimReason: "", description: "",

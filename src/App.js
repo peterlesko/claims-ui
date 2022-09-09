@@ -13,7 +13,7 @@ import AssessClaims from './Components/Claim/AssessClaims/AssessClaims';
 import { Provider } from 'react-redux';
 import claimsStore from './Components/Site/Store/Store';
 import ViewClaim from './Components/Claim/ViewClaim/ViewClaim';
-import AssessClaim from './Components/Claim/AssessClaims/AssessClaim';
+// import AssessClaim from './Components/Claim/AssessClaims/AssessClaim';
 
 function App() {
 
@@ -28,7 +28,7 @@ function App() {
                   <Route path="/edit/:claimId" element={<NewClaim/>} />
                   {/* this is working 
                   <Route path="/assessClaim/:claimId" element={<AssessClaim/>} /> */}
-                  <Route path="/assessClaim/:claimId" element={<NewClaim/>} />
+                  {/* <Route path="/assessClaim/:claimId" element={<NewClaim/>} /> */}
 
                   <Route path="/findAClaim" element={<FindAClaim/>} />
                   <Route path="/findAClaim/:surname" element={<FindAClaim />} />
@@ -36,13 +36,13 @@ function App() {
                   <Route path="/view/:claimId" element={<ViewClaim/>} />
 
 
-                  <Route path="/assessClaims" element={<AssessClaims/>} />
+                  <Route path="/assessClaims" element={<AssessClaims />} />
 
                   {/* <Route path="/find" element={<FindAClaim/>} /> */}
                   <Route path="/find/:claimId" element={<FindAClaim/>} />
 
 
-                  <Route path="/" element= {<h1>Welcome to the application</h1>} />
+                  <Route path="/" element= {<h1 className="home-page" >Welcome to the application</h1>} />
                   {/* <Route path="*" element= {<PageNotFound />} /> */}
                 </Routes>
             <Footer/>

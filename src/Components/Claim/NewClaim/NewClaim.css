@@ -40,10 +40,20 @@
     /* margin: 10px; */
 }
 
+.newClaim-form textarea {
+  margin-bottom: 7px;
+  display: block;
+}
+
+.newClaim-form select {
+  margin-bottom: 10px;
+}
+
 @media only screen and (max-width: 768px) {
   .newClaim-form {
     width: 70%;
-    background: #7891d6;
+    /* width: 30%; */
+    background: #8a9ed8;
   }
 }
 

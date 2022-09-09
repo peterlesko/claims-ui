@@ -11,14 +11,9 @@ const Menu = (props) => {
       <Link to="/findAClaim"><button className="findAClaim" type="button">FIND A CLAIM</button></Link> 
       {/* <Link to="/existingClaim"><button className="existingClaim" type="button">EXISTING CLAIM</button></Link>  */}
       <Link to="/assessClaims"><button className="assessClaims" type="button">ASSESS CLAIMS</button></Link> 
-
-      {/* <button className="existingClaim" type="button" >EXISTING CLAIM</button> */}
-      {/* <button className="search" type="button" onClick={() => props.setSelectedPage("search")}>SEARCH</button> */}
-      {/* <button className="view Claims" type="button">VIEW CLAIMS</button> */}
     </div>
   )
-
-
 }
 
 export default Menu;
+  

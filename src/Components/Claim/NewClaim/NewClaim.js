@@ -85,13 +85,25 @@ const reduxDispatch = useDispatch();
   },[editMode] )
 
   const [selectedTypeRadio, setSelectedTypeRadio] = useState("");
-                                          
+        
+  // //handle change before change
+  // const handleChange = (event) => {
+  //   setSelectedTypeRadio(event.target.value);
+  //   console.log(">>>>>>>>>>>>>>>>>> selectedTypeRadio:  "  + selectedTypeRadio);
+  //   const dataToChange = { field: event.target.id, value: event.target.value };
+  //   dispatch(dataToChange); 
+  // }
+
+
   const handleChange = (event) => {
-    setSelectedTypeRadio(event.target.value);
-    console.log(">>>>>>>>>>>>>>>>>> selectedTypeRadio:  "  + selectedTypeRadio);
+    if (event.target.id === "type") {
+      setSelectedTypeRadio(event.target.value);
+    }
+
     const dataToChange = { field: event.target.id, value: event.target.value };
     dispatch(dataToChange); 
   }
+
 
   // const {claimId, status, policyNumber, surname, type, claimStartDate} = newClaim;
 
@@ -132,10 +144,10 @@ const reduxDispatch = useDispatch();
       if (claimStartDate !== claimToEdit.claimStartDate) {
         data = {...data, claimStartDate : claimStartDate};
       };
-      if (claimReason !== claimReason.surname) {
+      if (claimReason !== claimToEdit.claimReason) {
         data = {...data, claimReason : claimReason };
       };
-      if (description !== description.surname) {
+      if (description !== claimToEdit.description) {
         data = {...data, description : description };
       };
       if (estAmount !== claimToEdit.estAmount) {
@@ -202,7 +214,7 @@ const reduxDispatch = useDispatch();
       <form onSubmit={submitForm}>
         {/* <h2>Register new claim</h2> */}
         
-        <h2>{editMode ? "Edit" : "Register new"} claim  {editMode ? claimId : ""}</h2>
+        <h2>{editMode ? "Edit" : "Register new"} claim ID  {editMode ? claimId : ""}</h2>
 
         <div  className="radio-container">   
              
@@ -222,9 +234,9 @@ const reduxDispatch = useDispatch();
             <input onChange={handleChange}  checked={type === "pet"}
             id="type" value="pet" name="type" type="radio"/>
             <label className="radio-label" htmlFor="pet">Pet</label>
-
           </>
         )}
+
         </div>
 
         {/* for edit mode only */}
@@ -235,28 +247,21 @@ const reduxDispatch = useDispatch();
           </>
         )}
 
-        {/* change later for edit mode only */}
-       { editMode && 
+        { editMode && 
           <Fragment>
-           <label htmlFor="status">Claim Status</label>
-           <input onChange={handleChange} id="status" value={newClaim.status} type="text" /> 
+              <label htmlFor="status">Claim Status</label>
+                <select id="status" onChange={handleChange} value={newClaim.status} > 
+
+                  <option value="" defaultValue>-- Select Status --</option>
+                  <option value="new">New</option>
+                  <option value="inProgress">In progress</option>
+                  <option value="awaitingPayment">Awaiting paymentmmmm</option>
+                  <option value="acceptedPaid">Accepted & paid</option>
+                  <option value="rejected">Rejected</option>
+                  <option value="escalated">Escalated</option>
+                </select>
           </Fragment>
         }
-
-    { editMode && 
-      <Fragment>
-          <label htmlFor="status">Claim Status</label>
-            <select id="status" onChange={handleChange} value={newClaim.status} > 
-              <option value="new">New1</option>
-              <option value="paid">Paid</option>
-              <option value="paid">accepted payment due</option>
-              <option value="paid">accepted & paid</option>
-              <option value="rejected">rejected</option>
-              <option value="paid">paid</option>
-              <option value="paid">escalated</option>          
-            </select>
-      </Fragment>
-    }
 
         <label htmlFor="policyNumber">Policy number</label>
         <input onChange={handleChange} id="policyNumber" value={newClaim.policyNumber} type="text" />
@@ -275,8 +280,9 @@ const reduxDispatch = useDispatch();
         <label htmlFor="claimReason">Claim Reason</label>
         <input onChange={handleChange} id="claimReason" value={newClaim.claimReason} type="text" /> 
 
+
         <label htmlFor="description">Claim Desc</label>
-        <input onChange={handleChange} id="description" value={newClaim.description} type="text" /> 
+        <textarea onChange={handleChange} id="description" value={newClaim.description} rows="3" cols="21" type="text" /> 
 
         <label htmlFor="estAmount">Est Amount</label>
         <input onChange={handleChange} id="estAmount" value={newClaim.estAmount} type="text" /> 
@@ -318,37 +324,8 @@ const reduxDispatch = useDispatch();
           </>
         )}
 
-
         <button disabled={saving} className="registerclaim_button" type="submit">Save</button>
         <p>{message}</p>
-
-
-        {/* style={{editMode: visible ? "block" : "none"}} */}
-        {/* <label htmlFor="status" style={{display: editMode ? "block" : "none"}} >Status</label>
-        <input onChange={handleChange} id="status" value={newClaim.status} type="text" style={{display: editMode ? "block" : "none"}} /> */}
-
-
-        {/* {editMode === false && (<label htmlFor="status">Status</label> && <input onChange={handleChange} id="status" value={newClaim.status} type="text" />) */}
-       
-
-{/* 
-        {selectedTypeRadio === "auto" && (
-          <>
-          <label htmlFor="status">Status</label>
-          <input onChange={handleChange} id="status" value={newClaim.status} type="text" /> 
-          </>
-        )} */}
-
-      {/* <div aria-hidden={ selectedTypeRadio !== "auto" }>
-        <>
-        <label htmlFor="status">Status</label>
-        <input onChange={handleChange} id="status" value={newClaim.status} type="text" />
-        </>
-      </div> */}
-
-{/* selectedTypeRadio */}
-
-
   
       </form>
     </div> 

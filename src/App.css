@@ -36,3 +36,10 @@
 .App-link {
   color: #61dafb;
 }
+
+.App home-page h1{
+  /* margin-left: auto;
+  margin-right: auto; */
+  text-align:center;
+
+}

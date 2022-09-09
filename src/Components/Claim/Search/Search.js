@@ -7,6 +7,7 @@ const Search = (props) => {
   const [searchClaimId, setSearchClaimId] = useState("");
   const [searchPolicyNo, setSearchPolicyNo] = useState("");
   const [searchSurname, setSearchSurname] = useState("");
+  const [touched, setTouched] = useState(false);
 
   const [valid, setValid] = useState(false);
 
@@ -62,6 +63,7 @@ const Search = (props) => {
           {/* <input type="text" id="surname" /> */}
 
           <button type="submit" disabled={!valid} className="Search">Search</button>
+          {touched && !valid && <p style={{color: "#f00", "fontSize": "12px", "marginTop": 0}}>Please enter valid value</p>}
         </form>
       </div>
     </div>

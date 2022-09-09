@@ -62,7 +62,7 @@ const AssessClaims = (props) => {
          
     <div className="assess-claims">
         
-      <h2>Asses claims</h2>
+      <h2 data-testid="h2">Assess claims</h2>
 
       <table className="claims-table">
         <thead>

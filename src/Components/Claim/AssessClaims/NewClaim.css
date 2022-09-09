@@ -65,3 +65,8 @@ input[type="radio"] {
 .assess-claims {
   margin-top: 30px;
 }
+
+.assess-claims h2 {
+  text-align:center;
+
+}
