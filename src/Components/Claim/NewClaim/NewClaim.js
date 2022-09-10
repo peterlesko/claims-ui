@@ -183,7 +183,7 @@ const reduxDispatch = useDispatch();
 
       <form onSubmit={submitForm}>
         
-        <h2>{editMode ? "Edit" : "Register new"} claim ID  {editMode ? claimId : ""}</h2>
+        <h2>{editMode ? "Edit" : "Register new"} claim {editMode ? claimId : ""}</h2>
 
         <div  className="radio-container">   
              
